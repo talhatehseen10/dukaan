@@ -32,6 +32,7 @@ class CustomTextField extends StatelessWidget {
     this.inputFormatter,
     this.onChanged,
     this.initialValue,
+    this.borderColor,
     this.fillColor = const Color(0xFFF6F7F8),
   });
 
@@ -49,6 +50,7 @@ class CustomTextField extends StatelessWidget {
   final String? hintText;
   final String? lableText;
   final Widget? prefix;
+  final Color? borderColor;
   final BoxConstraints? prefixConstraints;
   final Widget? suffixIcon;
   final BoxConstraints? suffixConstraints;
@@ -93,15 +95,16 @@ class CustomTextField extends StatelessWidget {
       hintStyle: context.bodySmall,
       labelText: lableText,
       labelStyle: context.bodySmall,
+      //prefix: prefix,
       enabledBorder: OutlineInputBorder(
-        borderSide: const BorderSide(
-          color: Color(0xffD8DADC),
+        borderSide: BorderSide(
+          color: borderColor == null ? const Color(0xffD8DADC) : borderColor!,
         ),
         borderRadius: BorderRadius.circular(Sizes.RADIUS_6),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: const BorderSide(
-          color: Color(0xffD8DADC),
+        borderSide: BorderSide(
+          color: borderColor == null ? const Color(0xffD8DADC) : borderColor!,
         ),
         borderRadius: BorderRadius.circular(Sizes.RADIUS_6),
       ),

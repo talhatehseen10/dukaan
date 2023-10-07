@@ -2,6 +2,7 @@ import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/routes/routes.dart';
 import 'package:dukaan/themes/controller/theme_controller.dart';
 import 'package:dukaan/views/authentication/controllers/login_form_controller.dart';
+import 'package:dukaan/views/custom_navigation_bar/controllers/custom_navigation_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -19,6 +20,7 @@ Future initialization() async {
   await GetStorage.init().then((value) async {
     Get.lazyPut(() => ThemeController(), fenix: true);
     Get.putAsync(() async => LoginFormController(), permanent: true);
+    Get.putAsync(() async => CustomNavigationController(), permanent: true);
   });
 }
 

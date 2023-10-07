@@ -9,4 +9,9 @@ class AppRoutes {
 
   //HOME
   static const String HOME = HomeScreen.routeName;
+  static const String SEE_ALL = SeeAllScreen.routeName;
+
+  //CATEGORY
+  static const String CATEGORY = CategoryScreen.routeName;
+
 }

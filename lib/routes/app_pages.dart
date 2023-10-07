@@ -17,5 +17,15 @@ class AppPages {
       page: () => const HomeScreen(),
       binding: HomeBinding(),
     ),
+    GetPage(
+      name: AppRoutes.CATEGORY,
+      page: () => const CategoryScreen(),
+      binding: CategoryBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.SEE_ALL,
+      page: () => const SeeAllScreen(),
+      binding: SeeAllBinding(),
+    ),
   ];
 }
