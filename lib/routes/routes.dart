@@ -5,7 +5,9 @@ import 'package:dukaan/views/authentication/bindings/register_form_binding.dart'
 import 'package:dukaan/views/authentication/views/login.dart';
 import 'package:dukaan/views/authentication/views/registier.dart';
 import 'package:dukaan/views/category/bindings/category_binding.dart';
+import 'package:dukaan/views/category/bindings/product_binding.dart';
 import 'package:dukaan/views/category/views/category_screen.dart';
+import 'package:dukaan/views/category/views/product_screen.dart';
 import 'package:dukaan/views/home/bindings/home_binding.dart';
 import 'package:dukaan/views/home/bindings/see_all_binding.dart';
 import 'package:dukaan/views/home/views/home_screen.dart';

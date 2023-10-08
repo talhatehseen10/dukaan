@@ -1,8 +1,10 @@
 import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/extensions/context_extension.dart';
+import 'package:dukaan/routes/routes.dart';
 import 'package:dukaan/views/custom_navigation_bar/views/custom_navigation_bar.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -99,7 +101,10 @@ class CategoryScreen extends StatelessWidget {
   }
 
   Widget categoryButton(BuildContext context, bool isCosmetic) {
-    return SizedBox(
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(AppRoutes.PRODUCT);
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

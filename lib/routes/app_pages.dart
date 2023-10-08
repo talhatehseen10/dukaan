@@ -27,5 +27,10 @@ class AppPages {
       page: () => const SeeAllScreen(),
       binding: SeeAllBinding(),
     ),
+    GetPage(
+      name: AppRoutes.PRODUCT,
+      page: () => const ProductScreen(),
+      binding: ProductBinding(),
+    ),
   ];
 }
