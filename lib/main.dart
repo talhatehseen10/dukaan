@@ -6,6 +6,8 @@ import 'package:dukaan/views/custom_navigation_bar/controllers/custom_navigation
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
+import 'package:responsive_framework/utils/scroll_behavior.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,27 +36,26 @@ class MyApp extends GetView<ThemeController> {
       debugShowCheckedModeBanner: false,
       title: AppStrings.APP_NAME,
       themeMode: ThemeMode.light,
-      // builder: (context, widget) {
-      //   return AnimatedTheme(
-      //     data: controller.getTheme,
-      //     child: Responsive,
-      //     // child: ResponsiveWrapper.builder(
-      //     //   MediaQuery(
-      //     //     // prevent font from scaling (some people use big/small device fonts)
-      //     //     // but we want our app font to still the same and dont get affected..
-      //     //     data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-      //     //     child: BouncingScrollWrapper.builder(context, widget!),
-      //     //   ),
-      //     //   defaultScale: true,
-      //     //   breakpoints: const [
-      //     //     ResponsiveBreakpoint.resize(450, name: MOBILE),
-      //     //     ResponsiveBreakpoint.resize(600, name: TABLET),
-      //     //     ResponsiveBreakpoint.autoScale(1200, name: DESKTOP),
-      //     //     ResponsiveBreakpoint.autoScale(2460, name: "4K"),
-      //     //   ],
-      //     // ),
-      //   );
-      // },
+      builder: (context, widget) {
+        return AnimatedTheme(
+          data: controller.getTheme,
+          child: ResponsiveWrapper.builder(
+            MediaQuery(
+              // prevent font from scaling (some people use big/small device fonts)
+              // but we want our app font to still the same and dont get affected..
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              child: BouncingScrollWrapper.builder(context, widget!),
+            ),
+            defaultScale: true,
+            breakpoints: const [
+              ResponsiveBreakpoint.resize(450, name: MOBILE),
+              ResponsiveBreakpoint.resize(600, name: TABLET),
+              ResponsiveBreakpoint.autoScale(1200, name: DESKTOP),
+              ResponsiveBreakpoint.autoScale(2460, name: "4K"),
+            ],
+          ),
+        );
+      },
       initialRoute: AppRoutes.LOGIN,
       getPages: AppPages.pages,
       defaultTransition: Transition.cupertino,

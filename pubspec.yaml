@@ -42,6 +42,8 @@ dependencies:
   pretty_dio_logger:
   material_symbols_icons:
   carousel_slider:
+  flutter_rating_bar:
+  responsive_framework: ^0.2.0
 
 dev_dependencies:
   flutter_test:

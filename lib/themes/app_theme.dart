@@ -59,7 +59,7 @@ class AppTheme {
         useMaterial3: true,
       ).copyWith(
         brightness: brightness,
-        primaryColor: const Color(0xff007e87),
+        primaryColor: AppColors.primaryColor,
         primaryColorLight: swatchColors.shade200,
         primaryColorDark: const Color(0xff007e87),
         scaffoldBackgroundColor: isDarkMode

@@ -76,7 +76,7 @@ class AppStrings {
   static const String PLEASE_WAIT = "Please Wait";
 
   static const String RATE_QUOTE = "Rate Quote";
-
+  static const String CHAT = "Chat";
 
   //NAVIGATION BAR TITLE
   static const String DASHBOARD = "Dashboard";
@@ -144,11 +144,12 @@ class AppStrings {
   static const String SRP_PERCENTAGE = "SRP %";
   static const String TAGS = "Tags";
   static const String NOTES = "Notes";
+  static const String RETURN_POLICY = "Return Policy";
 
   static const String ADJUSTMENT_QTY = "Adjustment Qty";
   static const String ITEM_NAME = "Item Name";
   static const String ITEMS = "Items";
-
+  
   static const String TRANSFER_FROM = "Transfer From";
   static const String TRANSFER_TO = "Transfer To";
 

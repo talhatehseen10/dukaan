@@ -1,7 +1,6 @@
 part of themes;
 
 class LightTheme {
-  
   //static const List<Color> accentColors = [Color(0xff44B2BC)];
   static const List<Color> accentColors = [
     Color(0xffff3b30),
@@ -59,7 +58,7 @@ class LightTheme {
   // ICONS
   static const Color appBarIconsColor = Colors.white;
   static const Color iconColor1 = AppColors.white;
-  static const Color iconColor = AppColors.primaryColor;
+  static const Color iconColor = AppColors.secondaryColor;
   static const Color navigationIconColor = Color(0xff535763);
 
   // BUTTON
@@ -68,7 +67,7 @@ class LightTheme {
   static const Color backButtonColor = AppColors.redShade5;
   static const Color buttonDisabledColor = Colors.grey;
   static const Color buttonDisabledTextColor = Colors.black;
-  static const Color buttonBackgroundColor = Color(0xff007e87);
+  static const Color buttonBackgroundColor = Color(0xff800000);
   static const Color buttonBackgroundColor2 = Color(0xff800000);
 
   // TEXT

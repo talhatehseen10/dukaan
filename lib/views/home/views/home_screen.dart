@@ -96,104 +96,110 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: Sizes.HEIGHT_246,
+            height: Sizes.HEIGHT_254,
             width: double.infinity,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 10,
               itemBuilder: (contex, index) {
-                return Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: Sizes.PADDING_2),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(Sizes.RADIUS_10),
-                  ),
-                  width: Sizes.WIDTH_150,
-                  height: Sizes.HEIGHT_246,
-                  child: Column(
-                    children: [
-                      Container(
-                        height: Sizes.HEIGHT_150,
-                        width: Sizes.WIDTH_200,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(
-                              Sizes.RADIUS_10,
-                            ),
-                            topRight: Radius.circular(
-                              Sizes.RADIUS_10,
-                            ),
-                          ),
-                          image: DecorationImage(
-                            fit: BoxFit.fitWidth,
-                            image: AssetImage("assets/image.png"),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: Color(0xffE28631),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(
-                              Sizes.RADIUS_10,
-                            ),
-                            bottomRight: Radius.circular(
-                              Sizes.RADIUS_10,
-                            ),
-                          ),
-                        ),
-                        padding: const EdgeInsets.all(
-                          Sizes.PADDING_10,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "1 Pcs IKI B beauty Product for girls.....",
-                              style: context.bodySmall.copyWith(
-                                color: Colors.white,
+                return GestureDetector(
+                  onTap: () {
+                    Get.toNamed(AppRoutes.PRODUCT_DETAILS);
+                  },
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: Sizes.PADDING_2),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Sizes.RADIUS_10),
+                    ),
+                    width: Sizes.WIDTH_150,
+                    height: Sizes.HEIGHT_246,
+                    child: Column(
+                      children: [
+                        Container(
+                          height: Sizes.HEIGHT_150,
+                          width: Sizes.WIDTH_200,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(
+                                Sizes.RADIUS_10,
+                              ),
+                              topRight: Radius.circular(
+                                Sizes.RADIUS_10,
                               ),
                             ),
-                            const SizedBox(
-                              height: Sizes.HEIGHT_4,
+                            image: DecorationImage(
+                              fit: BoxFit.fitWidth,
+                              image: AssetImage("assets/image.png"),
                             ),
-                            Text(
-                              "1090 PKR",
-                              style: context.bodySmall.copyWith(
-                                color: Colors.white,
+                          ),
+                        ),
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: Color(0xffE28631),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(
+                                Sizes.RADIUS_10,
+                              ),
+                              bottomRight: Radius.circular(
+                                Sizes.RADIUS_10,
                               ),
                             ),
-                            const SizedBox(
-                              height: Sizes.HEIGHT_6,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  child: Row(
-                                    children: [
-                                      const Icon(
-                                        Symbols.star_sharp,
-                                        color: Colors.white,
-                                      ),
-                                      Text(
-                                        "5.0",
-                                        style: context.bodySmall
-                                            .copyWith(color: Colors.white),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const Icon(
-                                  Icons.share,
+                          ),
+                          padding: const EdgeInsets.all(
+                            Sizes.PADDING_10,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "1 Pcs IKI B beauty Product for girls.....",
+                                style: context.bodySmall.copyWith(
                                   color: Colors.white,
                                 ),
-                              ],
-                            ),
-                          ],
+                              ),
+                              const SizedBox(
+                                height: Sizes.HEIGHT_4,
+                              ),
+                              Text(
+                                "1090 PKR",
+                                style: context.bodySmall.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: Sizes.HEIGHT_6,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    child: Row(
+                                      children: [
+                                        const Icon(
+                                          Symbols.star_sharp,
+                                          color: Colors.white,
+                                        ),
+                                        Text(
+                                          "5.0",
+                                          style: context.bodySmall
+                                              .copyWith(color: Colors.white),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const Icon(
+                                    Icons.share,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               },

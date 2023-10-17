@@ -56,6 +56,6 @@ class ThemeController extends GetxController {
           accentColor.value.value,
           AppTheme.getSwatch(accentColor.value),
         ),
-        primaryColor: const Color(0xff44B2BC),
+        primaryColor: AppColors.primaryColor,
       );
 }

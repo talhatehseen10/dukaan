@@ -1,8 +1,8 @@
 part of constants;
 
 class AppColors {
-  static const Color primaryColor = Color(0xff007E87);
-  static const Color secondaryColor = Color(0xff253C82);
+  static const Color primaryColor = Color(0xff800000);
+  static const Color secondaryColor = Color(0xffE28631);
   static const Color backgroundColor = Color(0xffEFF5FA);
 
   static const Color primaryText = Color(0xFF000000);

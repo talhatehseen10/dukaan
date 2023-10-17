@@ -12,6 +12,10 @@ import 'package:dukaan/views/home/bindings/home_binding.dart';
 import 'package:dukaan/views/home/bindings/see_all_binding.dart';
 import 'package:dukaan/views/home/views/home_screen.dart';
 import 'package:dukaan/views/home/views/see_all_screen.dart';
+import 'package:dukaan/views/order/bindings/order_detail_binding.dart';
+import 'package:dukaan/views/order/views/order_detail.dart';
+import 'package:dukaan/views/product/bindings/product_details_binding.dart';
+import 'package:dukaan/views/product/views/product_detail.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 part 'app_routes.dart';

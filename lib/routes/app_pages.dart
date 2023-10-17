@@ -32,5 +32,15 @@ class AppPages {
       page: () => const ProductScreen(),
       binding: ProductBinding(),
     ),
+    GetPage(
+      name: AppRoutes.PRODUCT_DETAILS,
+      page: () => const ProductDetails(),
+      binding: ProductDetailsBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.ORDER_DETAILS,
+      page: () => const OrderDetail(),
+      binding: OrderDetailBinding(),
+    ),
   ];
 }

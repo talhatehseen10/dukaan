@@ -14,4 +14,10 @@ class AppRoutes {
   //CATEGORY
   static const String CATEGORY = CategoryScreen.routeName;
   static const String PRODUCT = ProductScreen.routeName;
+
+  //PRODUCT
+  static const String PRODUCT_DETAILS = ProductDetails.routeName;
+
+  //ORDER
+  static const String ORDER_DETAILS = OrderDetail.routeName;
 }

@@ -8,7 +8,7 @@ AppBarTheme appBarTheme({
         backgroundColor: appBarColor,
         elevation: 0,
         iconTheme: IconThemeData(color: primaryColor),
-        titleTextStyle: GoogleFonts.lato(
+        titleTextStyle: GoogleFonts.poppins(
           textStyle: TextStyle(
             fontSize: Sizes.TEXT_SIZE_20,
             fontWeight: FontWeight.w500,
@@ -34,7 +34,7 @@ DataTableThemeData dataTableTheme({
         borderRadius: const BorderRadius.all(Radius.circular(Sizes.RADIUS_20)),
         border: Border.all(color: primaryColor),
       ),
-      dataTextStyle: GoogleFonts.lato(
+      dataTextStyle: GoogleFonts.poppins(
         textStyle: TextStyle(
           fontSize: Sizes.TEXT_SIZE_12,
           fontWeight: FontWeight.w500,
