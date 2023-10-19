@@ -8,6 +8,8 @@ class CustomNavigationController extends GetxController {
   RxList<String> screens = [
     AppRoutes.HOME,
     AppRoutes.CATEGORY,
+    AppRoutes.ORDERS,
+    AppRoutes.PROFILE
   ].obs;
 
   late LoginFormController loginController;

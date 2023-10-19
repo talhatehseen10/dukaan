@@ -15,7 +15,9 @@ class CategoryScreen extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: const CustomNavigatorBar(),
       appBar: customAppBar(
-          title: "Category", context: context, automaticallyImplyLeading: true),
+          title: "Category",
+          context: context,
+          automaticallyImplyLeading: false),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: Sizes.PADDING_24),
         child: SingleChildScrollView(

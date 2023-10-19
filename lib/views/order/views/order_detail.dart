@@ -1,9 +1,11 @@
 import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/extensions/context_extension.dart';
+import 'package:dukaan/routes/routes.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_app_bar.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_elevated_button.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_textbox_with_title.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class OrderDetail extends StatelessWidget {
   const OrderDetail({super.key});
@@ -17,7 +19,7 @@ class OrderDetail extends StatelessWidget {
       appBar: customAppBar(
           context: context,
           title: "Order Detail",
-          automaticallyImplyLeading: false),
+          automaticallyImplyLeading: true),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -229,7 +231,9 @@ class OrderDetail extends StatelessWidget {
                     Expanded(
                       child: CustomElevatedButton(
                         text: "Add to Bag",
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(AppRoutes.MY_BAG);
+                        },
                       ),
                     ),
                     const SizedBox(

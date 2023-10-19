@@ -8,11 +8,12 @@ AppBar customAppBar(
     String title = "",
     bool customLeading = false,
     Widget? widget,
-    void Function()? onTap}) {
-  //final themeController = Get.find<ThemeController>();
+    Color backgroundColor = const Color(0xfff9f9f9),
+    void Function()? onTap,
+    List<Widget>? actions}) {
   return AppBar(
     elevation: 0,
-    backgroundColor: const Color(0xfff9f9f9),
+    backgroundColor: backgroundColor,
     automaticallyImplyLeading: automaticallyImplyLeading,
     leading: automaticallyImplyLeading
         ? GestureDetector(
@@ -37,31 +38,32 @@ AppBar customAppBar(
         ),
       ],
     ),
-    actions: const [
-      Icon(
-        Icons.search,
-        color: Colors.black,
-        size: Sizes.ICON_SIZE_24,
-      ),
-      SizedBox(
-        width: Sizes.WIDTH_10,
-      ),
-      Icon(
-        Icons.notifications,
-        color: Colors.black,
-        size: Sizes.ICON_SIZE_24,
-      ),
-      SizedBox(
-        width: Sizes.WIDTH_10,
-      ),
-      Icon(
-        Icons.shopping_cart,
-        color: Colors.black,
-        size: Sizes.ICON_SIZE_24,
-      ),
-      SizedBox(
-        width: Sizes.WIDTH_10,
-      ),
-    ],
+    actions: actions ??
+        const [
+          Icon(
+            Icons.search,
+            color: Colors.black,
+            size: Sizes.ICON_SIZE_24,
+          ),
+          SizedBox(
+            width: Sizes.WIDTH_10,
+          ),
+          Icon(
+            Icons.notifications,
+            color: Colors.black,
+            size: Sizes.ICON_SIZE_24,
+          ),
+          SizedBox(
+            width: Sizes.WIDTH_10,
+          ),
+          Icon(
+            Icons.shopping_cart,
+            color: Colors.black,
+            size: Sizes.ICON_SIZE_24,
+          ),
+          SizedBox(
+            width: Sizes.WIDTH_10,
+          ),
+        ],
   );
 }

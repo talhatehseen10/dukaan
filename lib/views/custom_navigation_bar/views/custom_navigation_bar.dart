@@ -10,25 +10,42 @@ class CustomNavigatorBar extends GetView<CustomNavigationController> {
   Widget build(BuildContext context) {
     return NavigationBar(
       selectedIndex: controller.selectedIndex.value,
+      indicatorColor: const Color(0xffF6EDFF),
       backgroundColor: Colors.white,
       onDestinationSelected: (index) {
         controller.changeScreen(index);
       },
-      destinations: const [
+      destinations: [
         NavigationDestination(
-          icon: Icon(Icons.home),
+          selectedIcon: Icon(
+            Icons.home,
+            color: context.iconColor,
+          ),
+          icon: const Icon(Icons.home),
           label: "Home",
         ),
         NavigationDestination(
-          icon: Icon(Icons.dashboard),
+          selectedIcon: Icon(
+            Icons.dashboard,
+            color: context.iconColor,
+          ),
+          icon: const Icon(Icons.dashboard),
           label: "Category",
         ),
         NavigationDestination(
-          icon: Icon(Symbols.order_play),
+          selectedIcon: Icon(
+            Symbols.order_play,
+            color: context.iconColor,
+          ),
+          icon: const Icon(Symbols.order_play),
           label: "Orders",
         ),
         NavigationDestination(
-          icon: Icon(Icons.person),
+          selectedIcon: Icon(
+            Icons.person,
+            color: context.iconColor,
+          ),
+          icon: const Icon(Icons.person),
           label: "Profile",
         ),
       ],

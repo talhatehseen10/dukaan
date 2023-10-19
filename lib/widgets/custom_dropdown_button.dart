@@ -12,7 +12,7 @@ class CustomDropDownButton extends StatelessWidget {
   final bool showDropDownMenu;
   final Color borderColor;
   final TextEditingController? dropDownMenuController;
-  final void Function(dynamic)? onChnaged;
+  final void Function(dynamic)? onChanged;
   final String? Function(dynamic)? validator;
   final void Function()? onTap;
   final List<DropdownMenuItem<dynamic>>? dropDownItemList;
@@ -32,7 +32,7 @@ class CustomDropDownButton extends StatelessWidget {
       this.validator,
       this.onTap,
       this.isListOfString = true,
-      this.onChnaged,
+      this.onChanged,
       this.dropDownMenuEntryList = const [
         DropdownMenuEntry(
           value: "h",
@@ -175,7 +175,7 @@ class CustomDropDownButton extends StatelessWidget {
               alignment: AlignmentDirectional.center,
               focusColor: Colors.white,
               dropdownColor: Colors.white,
-              onChanged: onChnaged),
+              onChanged: onChanged),
     );
   }
 }

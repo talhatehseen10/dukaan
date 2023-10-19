@@ -4,7 +4,7 @@ part of constants;
 
 class AppStrings {
   // strings
-  static const String APP_NAME = "Dukaan";
+  static const String APP_NAME = "Gudam";
 
   static const String CHANGE_THEME = 'Change Theme';
   static const String DARK_MODE = 'Dark Mode';
@@ -149,7 +149,7 @@ class AppStrings {
   static const String ADJUSTMENT_QTY = "Adjustment Qty";
   static const String ITEM_NAME = "Item Name";
   static const String ITEMS = "Items";
-  
+
   static const String TRANSFER_FROM = "Transfer From";
   static const String TRANSFER_TO = "Transfer To";
 
@@ -167,7 +167,7 @@ class AppStrings {
   static const String GOOGLE = "Google";
   static const String SIGN_IN_WITH_GOOGLE = "Sign in with Google";
   static const String SIGN_UP_WITH_GOOGLE = "Sign up with Google";
-   static const String CONTINUE_WITH_MICROSOFT = "Continue with Microsoft";
+  static const String CONTINUE_WITH_MICROSOFT = "Continue with Microsoft";
   static const String CONTINUE_WITH_FACEBOOK = "Continue with Facebook";
   static const String FACEBOOK = "Facebook";
   static const String LOGIN_WITH_FACEBOOK = "Login With Facebook";

@@ -42,5 +42,30 @@ class AppPages {
       page: () => const OrderDetail(),
       binding: OrderDetailBinding(),
     ),
+    GetPage(
+      name: AppRoutes.MY_BAG,
+      page: () => const MyBag(),
+      binding: MyBagBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.PROFILE,
+      page: () => const Profile(),
+      binding: ProductBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.CUSTOMER_ADDRESS,
+      page: () => const CustomerAddress(),
+      binding: CustomerAddressBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.CHECK_OUT,
+      page: () => const CheckOut(),
+      binding: CheckOutBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.ORDERS,
+      page: () => const Order(),
+      binding: OrderBinding(),
+    ),
   ];
 }

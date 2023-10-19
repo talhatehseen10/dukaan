@@ -18,7 +18,9 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: const CustomNavigatorBar(),
       appBar: customAppBar(
-          context: context, title: "Dukaan", automaticallyImplyLeading: false),
+          context: context,
+          title: AppStrings.APP_NAME,
+          automaticallyImplyLeading: false),
       body: Column(
         children: [
           CarouselSlider(

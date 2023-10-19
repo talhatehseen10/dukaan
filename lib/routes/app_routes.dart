@@ -19,5 +19,21 @@ class AppRoutes {
   static const String PRODUCT_DETAILS = ProductDetails.routeName;
 
   //ORDER
+  static const String ORDERS = Order.routeName;
+
   static const String ORDER_DETAILS = OrderDetail.routeName;
+
+  //My BAG
+  static const String MY_BAG = MyBag.routeName;
+
+  //PROFILE
+  static const String PROFILE = Profile.routeName;
+
+  //ADDRESS 
+  static const String CUSTOMER_ADDRESS = CustomerAddress.routeName;
+
+  //CHECKOUT
+  static const String CHECK_OUT = CheckOut.routeName;
+
+  
 }

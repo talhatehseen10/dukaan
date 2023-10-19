@@ -1,7 +1,6 @@
 import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/extensions/context_extension.dart';
 import 'package:dukaan/routes/routes.dart';
-import 'package:dukaan/views/custom_navigation_bar/views/custom_navigation_bar.dart';
 import 'package:dukaan/views/product/components/product_description.dart';
 import 'package:dukaan/views/product/components/product_name_size.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_elevated_button.dart';
@@ -17,11 +16,10 @@ class ProductDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const CustomNavigatorBar(),
       appBar: customAppBar(
           context: context,
           title: "Product Detail",
-          automaticallyImplyLeading: false),
+          automaticallyImplyLeading: true),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
