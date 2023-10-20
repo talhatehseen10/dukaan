@@ -3,7 +3,6 @@ import 'package:dukaan/extensions/context_extension.dart';
 import 'package:dukaan/views/custom_navigation_bar/views/custom_navigation_bar.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class Order extends StatelessWidget {
   const Order({super.key});

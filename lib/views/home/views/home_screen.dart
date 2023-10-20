@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
           CarouselSlider(
             items: [
               Container(
-                height: Sizes.HEIGHT_180,
+                height: Sizes.HEIGHT_200,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.blueGrey.shade200,
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                 child: const FlutterLogo(),
               ),
               Container(
-                height: Sizes.HEIGHT_180,
+                height: Sizes.HEIGHT_200,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.blueGrey.shade200,

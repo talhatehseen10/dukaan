@@ -44,6 +44,7 @@ dependencies:
   carousel_slider:
   flutter_rating_bar:
   responsive_framework: ^0.2.0
+  dotted_border:
 
 dev_dependencies:
   flutter_test:

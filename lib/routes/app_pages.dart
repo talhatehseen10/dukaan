@@ -67,5 +67,18 @@ class AppPages {
       page: () => const Order(),
       binding: OrderBinding(),
     ),
+
+    //VENDOR SECTION
+    
+    GetPage(
+      name: AppRoutes.HOME_VENDOR,
+      page: () => const Home(),
+      binding: HomeVendorBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.PRODUCT_VENDOR,
+      page: () => const Product(),
+      binding: ProductVendorBinding(),
+    ),
   ];
 }

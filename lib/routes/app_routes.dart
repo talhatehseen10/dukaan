@@ -35,5 +35,12 @@ class AppRoutes {
   //CHECKOUT
   static const String CHECK_OUT = CheckOut.routeName;
 
-  
+  //VENDOR ROUTES
+
+  //HOME
+  static const String HOME_VENDOR = Home.routeName;
+
+  //PRODUCT
+  static const String PRODUCT_VENDOR = Product.routeName;
+
 }

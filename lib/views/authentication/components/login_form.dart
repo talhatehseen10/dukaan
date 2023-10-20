@@ -116,7 +116,8 @@ class LoginForm extends GetView<LoginFormController> {
                           statusBarHeight: statusBarHeight,
                           fontColor: AppColors.white,
                           onPressed: () {
-                            Get.toNamed(AppRoutes.HOME);
+                            controller.isVendor.value = true;
+                            Get.toNamed(AppRoutes.HOME_VENDOR);
                             // if (controller.formKey.currentState!.validate()) {
 
                             // }

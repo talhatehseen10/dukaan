@@ -15,40 +15,83 @@ class CustomNavigatorBar extends GetView<CustomNavigationController> {
       onDestinationSelected: (index) {
         controller.changeScreen(index);
       },
-      destinations: [
-        NavigationDestination(
-          selectedIcon: Icon(
-            Icons.home,
-            color: context.iconColor,
-          ),
-          icon: const Icon(Icons.home),
-          label: "Home",
-        ),
-        NavigationDestination(
-          selectedIcon: Icon(
-            Icons.dashboard,
-            color: context.iconColor,
-          ),
-          icon: const Icon(Icons.dashboard),
-          label: "Category",
-        ),
-        NavigationDestination(
-          selectedIcon: Icon(
-            Symbols.order_play,
-            color: context.iconColor,
-          ),
-          icon: const Icon(Symbols.order_play),
-          label: "Orders",
-        ),
-        NavigationDestination(
-          selectedIcon: Icon(
-            Icons.person,
-            color: context.iconColor,
-          ),
-          icon: const Icon(Icons.person),
-          label: "Profile",
-        ),
-      ],
+      destinations: controller.loginController.isVendor.value
+          ? [
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.home,
+                  color: context.iconColor,
+                ),
+                icon: const Icon(Icons.home),
+                label: "Home",
+              ),
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.article,
+                  color: context.iconColor,
+                ),
+                icon: const Icon(Icons.article),
+                label: "Orders",
+              ),
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.inventory_2,
+                  color: context.iconColor,
+                ),
+                icon: const Icon(Icons.inventory_2),
+                label: "Products",
+              ),
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.add_circle,
+                  color: context.iconColor,
+                ),
+                icon: const Icon(Icons.add_circle),
+                label: "Add",
+              ),
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.person,
+                  color: context.iconColor,
+                ),
+                icon: const Icon(Icons.person),
+                label: "Profile",
+              ),
+            ]
+          : [
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.home,
+                  color: context.iconColor,
+                ),
+                icon: const Icon(Icons.home),
+                label: "Home",
+              ),
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.dashboard,
+                  color: context.iconColor,
+                ),
+                icon: const Icon(Icons.dashboard),
+                label: "Category",
+              ),
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Symbols.order_play,
+                  color: context.iconColor,
+                ),
+                icon: const Icon(Symbols.order_play),
+                label: "Orders",
+              ),
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.person,
+                  color: context.iconColor,
+                ),
+                icon: const Icon(Icons.person),
+                label: "Profile",
+              ),
+            ],
     );
   }
 }

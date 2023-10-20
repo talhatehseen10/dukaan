@@ -10,6 +10,7 @@ class LoginFormController extends GetxController {
   final box = GetStorage(AppStrings.COMPANY_ID);
   //LoginModel? userLoginData;
   RxBool isLoading = false.obs;
+  RxBool isVendor = false.obs;
   RxBool companyDataRefresh = false.obs;
   RxBool companyAPIError = false.obs;
   Map<String, dynamic>? selectedCompany;
