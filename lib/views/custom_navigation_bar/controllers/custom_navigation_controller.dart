@@ -30,6 +30,8 @@ class CustomNavigationController extends GetxController {
     if (loginController.isVendor.value) {
       if (index == 2) {
         Get.toNamed(AppRoutes.PRODUCT_VENDOR);
+      } else if (index == 1) {
+        Get.toNamed(AppRoutes.ORDERS_VENDOR);
       } else {
         Get.toNamed(vendorScreens[index]);
       }

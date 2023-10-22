@@ -14,9 +14,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: const CustomNavigatorBar(),
       appBar: customAppBar(
-          context: context,
-          title: AppStrings.APP_NAME,
-          automaticallyImplyLeading: false),
+          context: context, showLogo: true, automaticallyImplyLeading: false),
       body: Column(
         children: [
           CarouselSlider(
@@ -99,9 +97,6 @@ class Home extends StatelessWidget {
                     ),
                   );
                 }),
-          ),
-          const SizedBox(
-            height: Sizes.HEIGHT_24,
           ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:dukaan/constants/constants.dart';
 
@@ -10,7 +11,8 @@ AppBar customAppBar(
     Widget? widget,
     Color backgroundColor = const Color(0xfff9f9f9),
     void Function()? onTap,
-    List<Widget>? actions}) {
+    List<Widget>? actions,
+    bool showLogo = false}) {
   return AppBar(
     elevation: 0,
     backgroundColor: backgroundColor,
@@ -28,14 +30,21 @@ AppBar customAppBar(
         : widget,
     title: Row(
       children: [
-        Text(
-          title,
-          style: context.textTheme.titleLarge!.copyWith(
-            fontWeight: FontWeight.w600,
-            fontSize: Sizes.TEXT_SIZE_22,
-            color: const Color(0xff800000),
-          ),
-        ),
+        showLogo
+            ? SvgPicture.asset(
+                "assets/logo.svg",
+                semanticsLabel: "Gudam Logo",
+                height: Sizes.HEIGHT_32,
+                width: Sizes.WIDTH_32,
+              )
+            : Text(
+                title,
+                style: context.textTheme.titleLarge!.copyWith(
+                  fontWeight: FontWeight.w600,
+                  fontSize: Sizes.TEXT_SIZE_22,
+                  color: const Color(0xff800000),
+                ),
+              ),
       ],
     ),
     actions: actions ??

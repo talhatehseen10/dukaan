@@ -5,6 +5,7 @@ import 'package:dukaan/views/custom_navigation_bar/views/custom_navigation_bar.d
 import 'package:dukaan/views/vendor/product/controllers/product_controller.dart';
 import 'package:dukaan/widgets/common_text_field.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_app_bar.dart';
+import 'package:dukaan/widgets/custom_widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,9 +18,7 @@ class Product extends GetView<ProductController> {
     return Scaffold(
       bottomNavigationBar: const CustomNavigatorBar(),
       appBar: customAppBar(
-          context: context,
-          title: AppStrings.APP_NAME,
-          automaticallyImplyLeading: false),
+          context: context, showLogo: true, automaticallyImplyLeading: false),
       body: Column(
         children: [
           Expanded(
@@ -59,14 +58,50 @@ class Product extends GetView<ProductController> {
                       title: const Text("Complete"),
                       isActive:
                           controller.currentStep.value == 2 ? true : false,
-                      content: const Center(
-                        child: Text("Completed"),
-                      ),
+                      content: complete(),
                     ),
                   ],
                 ),
               ),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget complete() {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: Sizes.PADDING_10),
+            child: CustomTextField(
+              lableText: "Return Policy",
+              borderColor: AppColors.secondaryColor,
+              fillColor: Colors.white,
+              minLine: 5,
+              maxLines: 5,
+            ),
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CustomElevatedButton(
+                  text: "Back",
+                  onPressed: () {},
+                ),
+              ),
+              const SizedBox(
+                width: Sizes.WIDTH_10,
+              ),
+              Expanded(
+                child: CustomElevatedButton(
+                  text: "Continue",
+                  onPressed: () {},
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -115,7 +150,50 @@ class Product extends GetView<ProductController> {
               ),
             ),
           ),
-        )
+        ),
+        SizedBox(
+          height: Get.height * 0.55,
+          width: double.infinity,
+          child: GridView.builder(
+              itemCount: 15,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 2 / 2.2,
+                  crossAxisCount: 3,
+                  mainAxisSpacing: Sizes.PADDING_16,
+                  crossAxisSpacing: Sizes.PADDING_16),
+              itemBuilder: (context, index) {
+                return SizedBox(
+                  height: Sizes.HEIGHT_150,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: Sizes.HEIGHT_100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(Sizes.RADIUS_6),
+                          image: const DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage("assets/image.png"),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: Sizes.PADDING_4,
+                          top: Sizes.PADDING_6,
+                        ),
+                        child: Text(
+                          "150 ml",
+                          style: context.bodySmall.copyWith(
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }),
+        ),
       ],
     );
   }

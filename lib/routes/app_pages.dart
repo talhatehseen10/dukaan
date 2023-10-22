@@ -80,5 +80,11 @@ class AppPages {
       page: () => const Product(),
       binding: ProductVendorBinding(),
     ),
+    GetPage(
+      name: AppRoutes.ORDERS_VENDOR,
+      page: () => const Orders(),
+      binding: OrderVendorBinding(),
+    ),
   ];
+
 }

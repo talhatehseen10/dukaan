@@ -43,4 +43,6 @@ class AppRoutes {
   //PRODUCT
   static const String PRODUCT_VENDOR = Product.routeName;
 
+  //ORDERS
+  static const String ORDERS_VENDOR = Orders.routeName;
 }

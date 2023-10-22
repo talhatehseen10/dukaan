@@ -1,5 +1,6 @@
 import 'package:dukaan/views/authentication/components/register_form.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/extensions/context_extension.dart';
@@ -24,12 +25,10 @@ class Register extends GetView<LoginFormController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        AppStrings.APP_NAME,
-                        style: context.headlineMedium.copyWith(
-                            color: const Color(0xff800000),
-                            fontWeight: FontWeight.w700),
-                      ),
+                      SvgPicture.asset("assets/logo.svg",
+                          height: Sizes.HEIGHT_60,
+                          width: Sizes.WIDTH_60,
+                          semanticsLabel: 'Gudam Logo')
                     ],
                   ),
                   const SizedBox(

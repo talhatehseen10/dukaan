@@ -27,6 +27,8 @@ import 'package:dukaan/views/product/views/product_detail.dart';
 import 'package:dukaan/views/profile/views/profile.dart';
 import 'package:dukaan/views/vendor/home/bindings/home_binding.dart';
 import 'package:dukaan/views/vendor/home/views/home.dart';
+import 'package:dukaan/views/vendor/orders/bindings/orders_binding.dart';
+import 'package:dukaan/views/vendor/orders/views/orders.dart';
 import 'package:dukaan/views/vendor/product/bindings/product_binding.dart';
 import 'package:dukaan/views/vendor/product/views/product.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
