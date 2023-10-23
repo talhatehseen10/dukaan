@@ -1,4 +1,3 @@
-import 'package:dukaan/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dukaan/constants/constants.dart';
@@ -44,10 +43,6 @@ class LoginForm extends GetView<LoginFormController> {
                     return null;
                   },
                   fillColor: Colors.white,
-                  prefix: Icon(
-                    Icons.email,
-                    color: context.iconColor,
-                  ),
                   hintText: AppStrings.EMAIL_HINT_TEXT,
                 ),
               ],
@@ -71,21 +66,30 @@ class LoginForm extends GetView<LoginFormController> {
                 const SizedBox(
                   height: Sizes.HEIGHT_10,
                 ),
-                CustomTextField(
-                  controller: controller.passwordController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Required";
-                    }
-                    return null;
-                  },
-                  fillColor: Colors.white,
-                  prefix: Icon(
-                    Icons.password,
-                    color: context.iconColor,
+                Obx(
+                  () => CustomTextField(
+                    controller: controller.passwordController,
+                    isObscureText: controller.isObscureText.value,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Required";
+                      }
+                      return null;
+                    },
+                    fillColor: Colors.white,
+                    hintText: AppStrings.PASSWORD_HINT_TEXT,
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        controller.isObscureText.value =
+                            !controller.isObscureText.value;
+                      },
+                      child: Icon(
+                        controller.isObscureText.value
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                    ),
                   ),
-                  hintText: AppStrings.PASSWORD_HINT_TEXT,
-                  suffixIcon: const Icon(Icons.remove_red_eye),
                 ),
               ],
             ),
@@ -116,11 +120,9 @@ class LoginForm extends GetView<LoginFormController> {
                           statusBarHeight: statusBarHeight,
                           fontColor: AppColors.white,
                           onPressed: () {
-                            controller.isVendor.value = true;
-                            Get.toNamed(AppRoutes.HOME_VENDOR);
-                            // if (controller.formKey.currentState!.validate()) {
-
-                            // }
+                            if (controller.formKey.currentState!.validate()) {
+                              controller.loginUser();
+                            }
                           },
                           text: AppStrings.LOG_IN,
                           backgoundColor: LightTheme.buttonBackgroundColor2,

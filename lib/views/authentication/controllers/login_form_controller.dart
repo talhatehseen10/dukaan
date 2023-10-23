@@ -1,3 +1,4 @@
+import 'package:dukaan/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -18,8 +19,9 @@ class LoginFormController extends GetxController {
   late TextEditingController emailController;
   late TextEditingController passwordController;
   late TextEditingController tokenController;
+  RxBool isObscureText = true.obs;
   String? showSwitchTile;
-  
+
   // @override
   // void onInit() {
   //   selectedCompany = box.read(AppStrings.COMPANY_ID);
@@ -62,7 +64,16 @@ class LoginFormController extends GetxController {
   //   Get.toNamed(AppRoutes.SALES_ORDER);
   // }
 
-  
+  void loginUser() {
+    if (emailController.text.toLowerCase() == "seller" &&
+        passwordController.text.toLowerCase() == "seller") {
+      Get.toNamed(AppRoutes.HOME);
+    } else if (emailController.text.toLowerCase() == "vendor" &&
+        passwordController.text.toLowerCase() == "vendor") {
+      Get.toNamed(AppRoutes.HOME_VENDOR);
+    }
+  }
+
   @override
   void onInit() {
     emailController = TextEditingController();

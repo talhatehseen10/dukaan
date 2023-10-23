@@ -90,11 +90,12 @@ class CustomTextField extends StatelessWidget {
   _buildDecoration(BuildContext context, double? height) {
     return InputDecoration(
       hintText: hintText,
-      // contentPadding: const EdgeInsets.symmetric(
-      //     vertical: Sizes.PADDING_16, horizontal: Sizes.PADDING_8),
+      contentPadding: const EdgeInsets.symmetric(
+          vertical: Sizes.PADDING_16, horizontal: Sizes.PADDING_8),
       hintStyle: context.bodySmall,
       labelText: lableText,
       labelStyle: context.bodySmall,
+
       //prefix: prefix,
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(

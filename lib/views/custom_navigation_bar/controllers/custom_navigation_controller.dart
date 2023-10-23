@@ -27,16 +27,16 @@ class CustomNavigationController extends GetxController {
   changeScreen(int index) {
     widgetRefresh.value = true;
     selectedIndex.value = index;
-    if (loginController.isVendor.value) {
+    if (loginController.emailController.text == "vendor") {
       if (index == 2) {
-        Get.toNamed(AppRoutes.PRODUCT_VENDOR);
+        Get.offAndToNamed(AppRoutes.PRODUCT_VENDOR);
       } else if (index == 1) {
-        Get.toNamed(AppRoutes.ORDERS_VENDOR);
+        Get.offAndToNamed(AppRoutes.ORDERS_VENDOR);
       } else {
-        Get.toNamed(vendorScreens[index]);
+        Get.offAndToNamed(vendorScreens[index]);
       }
     } else {
-      Get.toNamed(sellerScreens[index]);
+      Get.offAndToNamed(sellerScreens[index]);
     }
     widgetRefresh.value = false;
   }

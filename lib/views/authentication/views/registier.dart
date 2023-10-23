@@ -12,47 +12,46 @@ class Register extends GetView<LoginFormController> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: context.scaffoldBackgroundColor,
-        body: Center(
-          child: SingleChildScrollView(
-            child: SizedBox(
-              width: Sizes.WIDTH_320,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset("assets/logo.svg",
-                          height: Sizes.HEIGHT_60,
-                          width: Sizes.WIDTH_60,
-                          semanticsLabel: 'Gudam Logo')
-                    ],
-                  ),
-                  const SizedBox(
-                    height: Sizes.HEIGHT_66,
-                  ),
-                  Container(
-                    height: Sizes.HEIGHT_30,
-                    padding: const EdgeInsets.all(Sizes.PADDING_2),
-                    decoration: BoxDecoration(
-                      color: const Color(0xffEDEEEF),
-                      borderRadius: BorderRadius.circular(
-                        Sizes.RADIUS_8,
-                      ),
+    return Scaffold(
+      backgroundColor: context.scaffoldBackgroundColor,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: Sizes.PADDING_30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset("assets/logo.svg",
+                        height: Sizes.HEIGHT_60,
+                        width: Sizes.WIDTH_60,
+                        semanticsLabel: 'Gudam Logo')
+                  ],
+                ),
+                const SizedBox(
+                  height: Sizes.HEIGHT_66,
+                ),
+                Container(
+                  height: Sizes.HEIGHT_30,
+                  padding: const EdgeInsets.all(Sizes.PADDING_2),
+                  decoration: BoxDecoration(
+                    color: const Color(0xffEDEEEF),
+                    borderRadius: BorderRadius.circular(
+                      Sizes.RADIUS_8,
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: GestureDetector(
                           onTap: () {
                             Get.back();
                           },
                           child: Container(
                             height: Sizes.HEIGHT_28,
-                            width: Sizes.WIDTH_150,
                             decoration: BoxDecoration(
                               color: const Color(0xffEDEEEF),
                               borderRadius: BorderRadius.circular(
@@ -69,9 +68,10 @@ class Register extends GetView<LoginFormController> {
                             ),
                           ),
                         ),
-                        Container(
+                      ),
+                      Expanded(
+                        child: Container(
                           height: Sizes.HEIGHT_28,
-                          width: Sizes.WIDTH_150,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(
@@ -87,15 +87,15 @@ class Register extends GetView<LoginFormController> {
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(
-                    height: Sizes.HEIGHT_20,
-                  ),
-                  const RegisterForm(),
-                ],
-              ),
+                ),
+                const SizedBox(
+                  height: Sizes.HEIGHT_20,
+                ),
+                const RegisterForm(),
+              ],
             ),
           ),
         ),

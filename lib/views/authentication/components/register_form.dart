@@ -43,10 +43,6 @@ class RegisterForm extends GetView<RegisterFormController> {
                     return null;
                   },
                   fillColor: Colors.white,
-                  prefix: Icon(
-                    Icons.phone,
-                    color: context.iconColor,
-                  ),
                   hintText: AppStrings.PHONE_HINT_TEXT,
                 ),
               ],
@@ -79,10 +75,6 @@ class RegisterForm extends GetView<RegisterFormController> {
                     return null;
                   },
                   fillColor: Colors.white,
-                  prefix: Icon(
-                    Icons.password,
-                    color: context.iconColor,
-                  ),
                   hintText: AppStrings.PASSWORD_HINT_TEXT,
                   suffixIcon: const Icon(Icons.remove_red_eye),
                 ),
@@ -116,10 +108,6 @@ class RegisterForm extends GetView<RegisterFormController> {
                     return null;
                   },
                   fillColor: Colors.white,
-                  prefix: Icon(
-                    Icons.password,
-                    color: context.iconColor,
-                  ),
                   hintText: AppStrings.PASSWORD_HINT_TEXT,
                   suffixIcon: const Icon(Icons.remove_red_eye),
                 ),

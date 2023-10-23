@@ -45,7 +45,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
             options: CarouselOptions(
-              autoPlay: false,
+              autoPlay: true,
               enlargeCenterPage: true,
               viewportFraction: 0.9,
               aspectRatio: 2.0,
@@ -101,6 +101,7 @@ class HomeScreen extends StatelessWidget {
             height: Sizes.HEIGHT_254,
             width: double.infinity,
             child: ListView.builder(
+              padding: const EdgeInsets.only(left: Sizes.PADDING_24),
               scrollDirection: Axis.horizontal,
               itemCount: 10,
               itemBuilder: (contex, index) {

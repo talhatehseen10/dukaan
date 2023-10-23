@@ -99,7 +99,7 @@ class BaseClient {
       }
       // 3) return response (api done successfully)
       return await onSuccess(response);
-    } on DioError catch (error) {
+    } on DioException catch (error) {
       // dio error (api reach the server but not performed successfully
       _handleDioError(error: error, url: url, onError: onError);
     } on SocketException {
@@ -162,7 +162,7 @@ class BaseClient {
 
   /// handle Dio error
   static _handleDioError({
-    required DioError error,
+    required DioException error,
     Function(ApiException)? onError,
     required String url,
   }) {
