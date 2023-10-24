@@ -31,17 +31,11 @@ class HomeScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.blueGrey.shade200,
                   borderRadius: BorderRadius.circular(Sizes.RADIUS_6),
+                  image: const DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage('assets/slider_image.jpeg'),
+                  ),
                 ),
-                child: const FlutterLogo(),
-              ),
-              Container(
-                height: Sizes.HEIGHT_200,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.blueGrey.shade200,
-                  borderRadius: BorderRadius.circular(Sizes.RADIUS_6),
-                ),
-                child: const FlutterLogo(),
               ),
             ],
             options: CarouselOptions(

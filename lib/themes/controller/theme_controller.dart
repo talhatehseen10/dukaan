@@ -52,6 +52,7 @@ class ThemeController extends GetxController {
   ThemeData get getTheme => AppTheme.build(
         isDarkMode: isDarkMode.value,
         brightness: Get.isDarkMode ? Brightness.dark : Brightness.light,
+        
         swatchColors: MaterialColor(
           accentColor.value.value,
           AppTheme.getSwatch(accentColor.value),

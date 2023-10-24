@@ -16,6 +16,7 @@ class ProductDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: _bottomContainer(context),
       appBar: customAppBar(
           context: context,
           title: "Product Detail",
@@ -183,77 +184,81 @@ class ProductDetails extends StatelessWidget {
             const SizedBox(
               height: Sizes.HEIGHT_22,
             ),
-            Container(
-              color: const Color(0xffFFF5EC),
-              padding: const EdgeInsets.symmetric(
-                horizontal: Sizes.PADDING_28,
-                vertical: Sizes.PADDING_24,
-              ),
-              child: Column(
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _bottomContainer(BuildContext context) {
+    return Container(
+      height: Sizes.HEIGHT_210,
+      color: const Color(0xffFFF5EC),
+      padding: const EdgeInsets.symmetric(
+        horizontal: Sizes.PADDING_28,
+        vertical: Sizes.PADDING_24,
+      ),
+      child: Column(
+        children: [
+          ListTile(
+            leading: Text(
+              "Rs. 1230",
+              style: context.bodyLarge
+                  .copyWith(color: Colors.black, fontWeight: FontWeight.w700),
+            ),
+            trailing: SizedBox(
+              width: Sizes.WIDTH_130,
+              child: Row(
                 children: [
-                  ListTile(
-                    leading: Text(
-                      "Rs. 1230",
-                      style: context.bodyLarge.copyWith(
-                          color: Colors.black, fontWeight: FontWeight.w700),
-                    ),
-                    trailing: SizedBox(
-                      width: Sizes.WIDTH_130,
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.local_shipping,
-                            color: AppColors.secondaryColor,
-                            size: Sizes.ICON_SIZE_24,
-                          ),
-                          const SizedBox(
-                            width: Sizes.WIDTH_4,
-                          ),
-                          Text(
-                            "Delivery Rs. 100",
-                            style: context.bodySmall.copyWith(
-                                color: AppColors.secondaryColor,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
+                  const Icon(
+                    Icons.local_shipping,
+                    color: AppColors.secondaryColor,
+                    size: Sizes.ICON_SIZE_24,
                   ),
                   const SizedBox(
-                    height: Sizes.HEIGHT_20,
+                    width: Sizes.WIDTH_4,
                   ),
-                  const Divider(
-                    thickness: 0.5,
-                  ),
-                  const SizedBox(
-                    height: Sizes.HEIGHT_24,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CustomElevatedButton(
-                          text: "Place Order",
-                          onPressed: () {
-                            Get.toNamed(AppRoutes.ORDER_DETAILS);
-                          },
-                        ),
-                      ),
-                      const SizedBox(
-                        width: Sizes.WIDTH_20,
-                      ),
-                      Expanded(
-                        child: CustomElevatedButton(
-                          text: "Share",
-                          onPressed: () {},
-                        ),
-                      ),
-                    ],
+                  Text(
+                    "Delivery Rs. 100",
+                    style: context.bodySmall.copyWith(
+                        color: AppColors.secondaryColor,
+                        fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+          const SizedBox(
+            height: Sizes.HEIGHT_20,
+          ),
+          const Divider(
+            thickness: 0.5,
+          ),
+          const SizedBox(
+            height: Sizes.HEIGHT_24,
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CustomElevatedButton(
+                  text: "Place Order",
+                  onPressed: () {
+                    Get.toNamed(AppRoutes.ORDER_DETAILS);
+                  },
+                ),
+              ),
+              const SizedBox(
+                width: Sizes.WIDTH_20,
+              ),
+              Expanded(
+                child: CustomElevatedButton(
+                  text: "Share",
+                  onPressed: () {},
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

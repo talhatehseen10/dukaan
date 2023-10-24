@@ -1,9 +1,8 @@
-import 'package:dotted_border/dotted_border.dart';
 import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/extensions/context_extension.dart';
+import 'package:dukaan/routes/routes.dart';
 import 'package:dukaan/views/custom_navigation_bar/views/custom_navigation_bar.dart';
 import 'package:dukaan/views/vendor/product/controllers/product_controller.dart';
-import 'package:dukaan/widgets/common_text_field.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_app_bar.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
@@ -14,244 +13,207 @@ class Product extends GetView<ProductController> {
 
   static const String routeName = "/product_vendor";
   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const CustomNavigatorBar(),
+      bottomNavigationBar: Obx(() => controller.isBottomContainerVisible.value
+          ? _bottomContainer(context, controller)
+          : const CustomNavigatorBar()),
+      floatingActionButton:
+          Obx(() => controller.isBottomContainerVisible.value == false
+              ? FloatingActionButton(
+                  backgroundColor: context.primaryColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                      Sizes.RADIUS_30,
+                    ),
+                  ),
+                  onPressed: () {
+                    controller.isBottomContainerVisible.value =
+                        !controller.isBottomContainerVisible.value;
+                  },
+                  child: const Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
+                )
+              : const SizedBox()),
       appBar: customAppBar(
           context: context, showLogo: true, automaticallyImplyLeading: false),
       body: Column(
         children: [
-          Expanded(
-            child: Obx(
-              () => Theme(
-                data: ThemeData(
-                  canvasColor: Colors.grey.shade100,
-                  colorScheme: Theme.of(context).colorScheme.copyWith(
-                        primary: AppColors.secondaryColor,
-                        // background: Colors.red,
-                        // secondary: Colors.green,
-                      ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: Sizes.PADDING_2,
+              horizontal: Sizes.PADDING_24,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Beauty Products",
+                  style: context.bodySmall.copyWith(
+                      fontSize: Sizes.TEXT_SIZE_14,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey),
                 ),
-                child: Stepper(
-                  onStepTapped: (index) {
-                    controller.currentStep.value = index;
-                  },
-                  controlsBuilder: (context, controller) {
-                    return const SizedBox();
-                  },
-                  currentStep: controller.currentStep.value,
-                  type: StepperType.horizontal,
-                  steps: [
-                    Step(
-                      title: const Text("Product Details"),
-                      isActive:
-                          controller.currentStep.value == 0 ? true : false,
-                      content: productDetail(),
-                    ),
-                    Step(
-                      title: const Text("Image"),
-                      isActive:
-                          controller.currentStep.value == 1 ? true : false,
-                      content: image(context),
-                    ),
-                    Step(
-                      title: const Text("Complete"),
-                      isActive:
-                          controller.currentStep.value == 2 ? true : false,
-                      content: complete(),
-                    ),
-                  ],
+                Text(
+                  "See All",
+                  style: context.bodySmall.copyWith(
+                      fontSize: Sizes.TEXT_SIZE_14,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.secondaryColor),
                 ),
-              ),
+              ],
             ),
           ),
+          tab(context),
         ],
       ),
     );
   }
+}
 
-  Widget complete() {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: Sizes.PADDING_10),
-            child: CustomTextField(
-              lableText: "Return Policy",
-              borderColor: AppColors.secondaryColor,
-              fillColor: Colors.white,
-              minLine: 5,
-              maxLines: 5,
-            ),
+Widget _bottomContainer(BuildContext context, ProductController controller) {
+  return Container(
+    height: Sizes.HEIGHT_200,
+    color: const Color(0xffFFF5EC),
+    padding: const EdgeInsets.symmetric(
+      horizontal: Sizes.PADDING_28,
+      vertical: Sizes.PADDING_24,
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            GestureDetector(
+              onTap: () {
+                controller.isBottomContainerVisible.value = false;
+              },
+              child: const Icon(
+                Icons.cancel,
+                size: Sizes.ICON_SIZE_24,
+              ),
+            )
+          ],
+        ),
+        SizedBox(
+          height: Sizes.HEIGHT_50,
+          width: double.infinity,
+          child: CustomElevatedButton(
+            text: "Add Product",
+            onPressed: () {
+              controller.isBottomContainerVisible.value = false;
+              Get.toNamed(AppRoutes.ADD_PRODUCT_VENDOR);
+            },
           ),
-          Row(
+        ),
+        SizedBox(
+          height: Sizes.HEIGHT_50,
+          width: double.infinity,
+          child: CustomElevatedButton(
+            text: "Add Category",
+            onPressed: () {},
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget tab(BuildContext context) {
+  return Expanded(
+    child: ListView.builder(
+      padding: const EdgeInsets.symmetric(
+        vertical: Sizes.PADDING_10,
+        horizontal: Sizes.PADDING_24,
+      ),
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return Container(
+          margin: const EdgeInsets.only(
+            bottom: Sizes.PADDING_10,
+          ),
+          padding: const EdgeInsets.all(Sizes.PADDING_10),
+          width: double.infinity,
+          height: Sizes.HEIGHT_150,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(Sizes.RADIUS_8),
+            color: const Color(0xffF9F9F9),
+          ),
+          child: Row(
             children: [
               Expanded(
-                child: CustomElevatedButton(
-                  text: "Back",
-                  onPressed: () {},
+                flex: 2,
+                child: Container(
+                  height: Sizes.HEIGHT_140,
+                  width: Sizes.WIDTH_140,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Sizes.RADIUS_8),
+                    image: const DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage("assets/image2.png"),
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(
                 width: Sizes.WIDTH_10,
               ),
               Expanded(
-                child: CustomElevatedButton(
-                  text: "Continue",
-                  onPressed: () {},
+                flex: 3,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Delivered To: Aqsa Jamali",
+                      style: context.bodySmall.copyWith(
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: Sizes.HEIGHT_6,
+                    ),
+                    Text(
+                      "Order No. 1321123",
+                      style: context.bodySmall.copyWith(
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: Sizes.HEIGHT_6,
+                    ),
+                    Text(
+                      "Rs: 1340",
+                      style: context.bodySmall.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.secondaryColor),
+                    ),
+                    const SizedBox(
+                      height: Sizes.HEIGHT_24,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SizedBox(
+                          height: Sizes.HEIGHT_36,
+                          width: Sizes.WIDTH_120,
+                          child: CustomElevatedButton(
+                            text: "View",
+                            onPressed: () {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget image(BuildContext context) {
-    return Column(
-      children: [
-        CustomTextField(
-          lableText: "Input Size",
-          fillColor: Colors.white,
-          borderColor: AppColors.secondaryColor,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: Sizes.PADDING_16,
-          ),
-          child: DottedBorder(
-            color: const Color(0xffD9D9D9),
-            strokeWidth: 1,
-            borderType: BorderType.RRect,
-            dashPattern: const [8],
-            padding: const EdgeInsets.all(Sizes.PADDING_8),
-            radius: const Radius.circular(Sizes.RADIUS_10),
-            child: SizedBox(
-              height: Sizes.HEIGHT_46,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.add_circle_outline,
-                    color: Color(0xffA7A7A7),
-                    size: Sizes.ICON_SIZE_24,
-                  ),
-                  const SizedBox(
-                    width: Sizes.WIDTH_6,
-                  ),
-                  Text(
-                    "Add Image",
-                    style: context.bodySmall.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.secondaryColor),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: Get.height * 0.55,
-          width: double.infinity,
-          child: GridView.builder(
-              itemCount: 15,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 2 / 2.2,
-                  crossAxisCount: 3,
-                  mainAxisSpacing: Sizes.PADDING_16,
-                  crossAxisSpacing: Sizes.PADDING_16),
-              itemBuilder: (context, index) {
-                return SizedBox(
-                  height: Sizes.HEIGHT_150,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: Sizes.HEIGHT_100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(Sizes.RADIUS_6),
-                          image: const DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage("assets/image.png"),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: Sizes.PADDING_4,
-                          top: Sizes.PADDING_6,
-                        ),
-                        child: Text(
-                          "150 ml",
-                          style: context.bodySmall.copyWith(
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              }),
-        ),
-      ],
-    );
-  }
-
-  Widget productDetail() {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: Sizes.PADDING_12),
-          child: CustomTextField(
-            lableText: "Product Name",
-            fillColor: Colors.white,
-            borderColor: AppColors.secondaryColor,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: Sizes.PADDING_12),
-          child: CustomTextField(
-            lableText: "Description",
-            fillColor: Colors.white,
-            borderColor: AppColors.secondaryColor,
-            minLine: 5,
-            maxLines: 5,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: Sizes.PADDING_12),
-          child: CustomTextField(
-            lableText: "Stock",
-            fillColor: Colors.white,
-            borderColor: AppColors.secondaryColor,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: Sizes.PADDING_12),
-          child: CustomTextField(
-            lableText: "Category",
-            fillColor: Colors.white,
-            borderColor: AppColors.secondaryColor,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: Sizes.PADDING_12),
-          child: CustomTextField(
-            lableText: "Measurement",
-            fillColor: Colors.white,
-            borderColor: AppColors.secondaryColor,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: Sizes.PADDING_12),
-          child: CustomTextField(
-            lableText: "Margin for Seller",
-            fillColor: Colors.white,
-            borderColor: AppColors.secondaryColor,
-          ),
-        ),
-      ],
-    );
-  }
+        );
+      },
+    ),
+  );
 }

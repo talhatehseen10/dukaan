@@ -4,6 +4,7 @@ import 'package:dukaan/views/authentication/controllers/login_form_controller.da
 
 class CustomNavigationController extends GetxController {
   RxInt selectedIndex = 0.obs;
+  RxInt lastRoute = 0.obs;
   RxBool widgetRefresh = false.obs;
   RxList<String> sellerScreens = [
     AppRoutes.HOME,
@@ -14,6 +15,9 @@ class CustomNavigationController extends GetxController {
 
   RxList<String> vendorScreens = [
     AppRoutes.HOME_VENDOR,
+    AppRoutes.ORDERS_VENDOR,
+    AppRoutes.PRODUCT_VENDOR,
+    AppRoutes.PROFILE,
   ].obs;
 
   late LoginFormController loginController;
@@ -28,15 +32,13 @@ class CustomNavigationController extends GetxController {
     widgetRefresh.value = true;
     selectedIndex.value = index;
     if (loginController.emailController.text == "vendor") {
-      if (index == 2) {
-        Get.offAndToNamed(AppRoutes.PRODUCT_VENDOR);
-      } else if (index == 1) {
-        Get.offAndToNamed(AppRoutes.ORDERS_VENDOR);
-      } else {
+      if (Get.currentRoute != vendorScreens[index]) {
         Get.offAndToNamed(vendorScreens[index]);
       }
     } else {
-      Get.offAndToNamed(sellerScreens[index]);
+      if (Get.currentRoute != sellerScreens[index]) {
+        Get.offAndToNamed(sellerScreens[index]);
+      }
     }
     widgetRefresh.value = false;
   }

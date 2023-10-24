@@ -22,7 +22,10 @@ class CustomNavigatorBar extends GetView<CustomNavigationController> {
                   Icons.home,
                   color: context.iconColor,
                 ),
-                icon: const Icon(Icons.home),
+                icon: const Icon(
+                  Icons.home,
+                  color: Colors.grey,
+                ),
                 label: "Home",
               ),
               NavigationDestination(
@@ -43,14 +46,6 @@ class CustomNavigatorBar extends GetView<CustomNavigationController> {
               ),
               NavigationDestination(
                 selectedIcon: Icon(
-                  Icons.add_circle,
-                  color: context.iconColor,
-                ),
-                icon: const Icon(Icons.add_circle),
-                label: "Add",
-              ),
-              NavigationDestination(
-                selectedIcon: Icon(
                   Icons.person,
                   color: context.iconColor,
                 ),
@@ -64,7 +59,10 @@ class CustomNavigatorBar extends GetView<CustomNavigationController> {
                   Icons.home,
                   color: context.iconColor,
                 ),
-                icon: const Icon(Icons.home),
+                icon: const Icon(
+                  Icons.home,
+                  color: Colors.grey,
+                ),
                 label: "Home",
               ),
               NavigationDestination(
