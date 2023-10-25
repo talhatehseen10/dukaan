@@ -16,6 +16,7 @@ class Home extends GetView<HomeController> {
     return Scaffold(
       bottomNavigationBar: const CustomNavigatorBar(),
       appBar: customAppBar(
+          backgroundColor: Colors.white,
           context: context,
           showLogo: true,
           automaticallyImplyLeading: false,
@@ -74,7 +75,7 @@ class Home extends GetView<HomeController> {
               autoPlay: true,
               enlargeCenterPage: true,
               viewportFraction: 0.9,
-              aspectRatio: 2.0,
+              aspectRatio: 1.7,
               initialPage: 2,
             ),
           ),

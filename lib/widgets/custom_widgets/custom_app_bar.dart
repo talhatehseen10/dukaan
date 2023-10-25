@@ -9,7 +9,7 @@ AppBar customAppBar(
     String title = "",
     bool customLeading = false,
     Widget? widget,
-    Color backgroundColor = const Color(0xfff9f9f9),
+    Color backgroundColor = const Color(0xffFFF5EC),
     void Function()? onTap,
     List<Widget>? actions,
     bool showLogo = false}) {
@@ -50,7 +50,7 @@ AppBar customAppBar(
     actions: actions ??
         const [
           Icon(
-            Icons.search,
+            Icons.search_rounded,
             color: Colors.black,
             size: Sizes.ICON_SIZE_24,
           ),
@@ -58,7 +58,7 @@ AppBar customAppBar(
             width: Sizes.WIDTH_10,
           ),
           Icon(
-            Icons.notifications,
+            Icons.notifications_outlined,
             color: Colors.black,
             size: Sizes.ICON_SIZE_24,
           ),
@@ -66,7 +66,7 @@ AppBar customAppBar(
             width: Sizes.WIDTH_10,
           ),
           Icon(
-            Icons.shopping_cart,
+            Icons.shopping_bag_outlined,
             color: Colors.black,
             size: Sizes.ICON_SIZE_24,
           ),

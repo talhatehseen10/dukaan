@@ -86,8 +86,11 @@ class Sizes {
   static const double HEIGHT_80 = 80.0;
   static const double HEIGHT_74 = 74.0;
   static const double HEIGHT_70 = 70.0;
+  static const double HEIGHT_68 = 68.0;
   static const double HEIGHT_66 = 66.0;
   static const double HEIGHT_60 = 60.0;
+  static const double HEIGHT_58 = 58.0;
+  static const double HEIGHT_56 = 56.0;
   static const double HEIGHT_54 = 54.0;
   static const double HEIGHT_52 = 52.0;
   static const double HEIGHT_50 = 50.0;
@@ -144,6 +147,7 @@ class Sizes {
   static const double WIDTH_100 = 100.0;
   static const double WIDTH_88 = 88.0;
   static const double WIDTH_80 = 80.0;
+  static const double WIDTH_68 = 68.0;
   static const double WIDTH_60 = 60.0;
   static const double WIDTH_54 = 54.0;
   static const double WIDTH_50 = 50.0;

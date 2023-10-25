@@ -76,8 +76,8 @@ class LoginFormController extends GetxController {
 
   @override
   void onInit() {
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
+    emailController = TextEditingController(text: "seller");
+    passwordController = TextEditingController(text: "seller");
     super.onInit();
   }
 

@@ -49,7 +49,7 @@ class LoginForm extends GetView<LoginFormController> {
             ),
           ),
           const SizedBox(
-            height: Sizes.HEIGHT_20,
+            height: Sizes.HEIGHT_24,
           ),
           SizedBox(
             child: Column(
@@ -68,6 +68,7 @@ class LoginForm extends GetView<LoginFormController> {
                 ),
                 Obx(
                   () => CustomTextField(
+                    height: Sizes.HEIGHT_56,
                     controller: controller.passwordController,
                     isObscureText: controller.isObscureText.value,
                     validator: (value) {
@@ -87,6 +88,7 @@ class LoginForm extends GetView<LoginFormController> {
                         controller.isObscureText.value
                             ? Icons.visibility
                             : Icons.visibility_off,
+                        size: Sizes.ICON_SIZE_24,
                       ),
                     ),
                   ),
@@ -115,7 +117,7 @@ class LoginForm extends GetView<LoginFormController> {
                     children: [
                       Expanded(
                         child: CustomElevatedButton(
-                          height: Sizes.HEIGHT_54,
+                          height: Sizes.HEIGHT_56,
                           screenHeight: screenHeight,
                           statusBarHeight: statusBarHeight,
                           fontColor: AppColors.white,

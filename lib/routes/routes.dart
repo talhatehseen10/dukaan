@@ -24,6 +24,7 @@ import 'package:dukaan/views/order/views/order.dart';
 import 'package:dukaan/views/order/views/order_detail.dart';
 import 'package:dukaan/views/product/bindings/product_details_binding.dart';
 import 'package:dukaan/views/product/views/product_detail.dart';
+import 'package:dukaan/views/profile/bindings/profile_binding.dart';
 import 'package:dukaan/views/profile/views/profile.dart';
 import 'package:dukaan/views/vendor/home/bindings/home_binding.dart';
 import 'package:dukaan/views/vendor/home/views/home.dart';

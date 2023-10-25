@@ -18,6 +18,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: const CustomNavigatorBar(),
       appBar: customAppBar(
+          backgroundColor: Colors.white,
           context: context,
           title: AppStrings.APP_NAME,
           automaticallyImplyLeading: false),
@@ -26,7 +27,6 @@ class HomeScreen extends StatelessWidget {
           CarouselSlider(
             items: [
               Container(
-                height: Sizes.HEIGHT_200,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.blueGrey.shade200,
@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
               autoPlay: true,
               enlargeCenterPage: true,
               viewportFraction: 0.9,
-              aspectRatio: 2.0,
+              aspectRatio: 1.7,
               initialPage: 2,
             ),
           ),

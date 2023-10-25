@@ -91,7 +91,7 @@ class CustomTextField extends StatelessWidget {
     return InputDecoration(
       hintText: hintText,
       contentPadding: const EdgeInsets.symmetric(
-          vertical: Sizes.PADDING_16, horizontal: Sizes.PADDING_8),
+          vertical: Sizes.PADDING_20, horizontal: Sizes.PADDING_8),
       hintStyle: context.bodySmall,
       labelText: lableText,
       labelStyle: context.bodySmall,

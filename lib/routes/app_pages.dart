@@ -50,7 +50,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.PROFILE,
       page: () => const Profile(),
-      binding: ProductBinding(),
+      binding: ProfileBinding(),
     ),
     GetPage(
       name: AppRoutes.CUSTOMER_ADDRESS,

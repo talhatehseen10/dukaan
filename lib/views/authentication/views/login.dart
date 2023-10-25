@@ -26,16 +26,16 @@ class Login extends GetView<LoginFormController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SvgPicture.asset("assets/logo.svg",
-                        height: Sizes.HEIGHT_60,
-                        width: Sizes.WIDTH_60,
+                        height: Sizes.HEIGHT_68,
+                        width: Sizes.WIDTH_68,
                         semanticsLabel: 'Gudam Logo')
                   ],
                 ),
                 const SizedBox(
-                  height: Sizes.HEIGHT_66,
+                  height: Sizes.HEIGHT_58,
                 ),
                 Container(
-                  height: Sizes.HEIGHT_30,
+                  height: Sizes.HEIGHT_40,
                   padding: const EdgeInsets.all(Sizes.PADDING_2),
                   decoration: BoxDecoration(
                     color: const Color(0xffEDEEEF),
@@ -47,7 +47,6 @@ class Login extends GetView<LoginFormController> {
                     children: [
                       Expanded(
                         child: Container(
-                          height: Sizes.HEIGHT_28,
                           width: Sizes.WIDTH_150,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -60,6 +59,7 @@ class Login extends GetView<LoginFormController> {
                               AppStrings.LOG_IN_4,
                               style: context.bodySmall.copyWith(
                                   color: AppColors.black,
+                                  fontSize: Sizes.TEXT_SIZE_14,
                                   fontWeight: FontWeight.w600),
                             ),
                           ),
@@ -79,6 +79,7 @@ class Login extends GetView<LoginFormController> {
                                 AppStrings.REGISTER,
                                 style: context.bodySmall.copyWith(
                                     color: AppColors.black,
+                                    fontSize: Sizes.TEXT_SIZE_14,
                                     fontWeight: FontWeight.w600),
                               ),
                             ),
@@ -89,7 +90,7 @@ class Login extends GetView<LoginFormController> {
                   ),
                 ),
                 const SizedBox(
-                  height: Sizes.HEIGHT_20,
+                  height: Sizes.HEIGHT_24,
                 ),
                 const LoginForm(),
               ],

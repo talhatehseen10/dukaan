@@ -46,7 +46,7 @@ dependencies:
   responsive_framework: ^0.2.0
   dotted_border:
   flutter_svg:
-
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

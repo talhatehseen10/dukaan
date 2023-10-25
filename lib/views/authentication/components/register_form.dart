@@ -49,7 +49,7 @@ class RegisterForm extends GetView<RegisterFormController> {
             ),
           ),
           const SizedBox(
-            height: Sizes.HEIGHT_20,
+            height: Sizes.HEIGHT_24,
           ),
           SizedBox(
             child: Column(
@@ -76,13 +76,16 @@ class RegisterForm extends GetView<RegisterFormController> {
                   },
                   fillColor: Colors.white,
                   hintText: AppStrings.PASSWORD_HINT_TEXT,
-                  suffixIcon: const Icon(Icons.remove_red_eye),
+                  suffixIcon: const Icon(
+                    Icons.remove_red_eye,
+                    size: Sizes.ICON_SIZE_24,
+                  ),
                 ),
               ],
             ),
           ),
           const SizedBox(
-            height: Sizes.HEIGHT_20,
+            height: Sizes.HEIGHT_24,
           ),
           SizedBox(
             child: Column(
@@ -109,7 +112,10 @@ class RegisterForm extends GetView<RegisterFormController> {
                   },
                   fillColor: Colors.white,
                   hintText: AppStrings.PASSWORD_HINT_TEXT,
-                  suffixIcon: const Icon(Icons.remove_red_eye),
+                  suffixIcon: const Icon(
+                    Icons.remove_red_eye,
+                    size: Sizes.ICON_SIZE_24,
+                  ),
                 ),
               ],
             ),
@@ -129,7 +135,7 @@ class RegisterForm extends GetView<RegisterFormController> {
                     children: [
                       Expanded(
                         child: CustomElevatedButton(
-                          height: Sizes.HEIGHT_54,
+                          height: Sizes.HEIGHT_56,
                           screenHeight: screenHeight,
                           statusBarHeight: statusBarHeight,
                           fontColor: AppColors.white,

@@ -19,11 +19,11 @@ class CustomNavigatorBar extends GetView<CustomNavigationController> {
           ? [
               NavigationDestination(
                 selectedIcon: Icon(
-                  Icons.home,
+                  Icons.home_rounded,
                   color: context.iconColor,
                 ),
                 icon: const Icon(
-                  Icons.home,
+                  Icons.home_rounded,
                   color: Colors.grey,
                 ),
                 label: "Home",
@@ -55,38 +55,38 @@ class CustomNavigatorBar extends GetView<CustomNavigationController> {
             ]
           : [
               NavigationDestination(
+                //  selectedIcon: AnimatedIcon(icon: AnimatedIcons.home_menu, progress: ),
                 selectedIcon: Icon(
-                  Icons.home,
+                  Icons.home_filled,
                   color: context.iconColor,
                 ),
                 icon: const Icon(
-                  Icons.home,
-                  color: Colors.grey,
+                  Symbols.home,
                 ),
                 label: "Home",
               ),
               NavigationDestination(
                 selectedIcon: Icon(
-                  Icons.dashboard,
+                  Symbols.grid_view_rounded,
                   color: context.iconColor,
                 ),
-                icon: const Icon(Icons.dashboard),
+                icon: const Icon(Symbols.grid_view_rounded),
                 label: "Category",
               ),
               NavigationDestination(
                 selectedIcon: Icon(
-                  Symbols.order_play,
+                  Symbols.order_play_rounded,
                   color: context.iconColor,
                 ),
-                icon: const Icon(Symbols.order_play),
+                icon: const Icon(Symbols.order_play_rounded),
                 label: "Orders",
               ),
               NavigationDestination(
                 selectedIcon: Icon(
-                  Icons.person,
+                  Icons.person_rounded,
                   color: context.iconColor,
                 ),
-                icon: const Icon(Icons.person),
+                icon: const Icon(Icons.person_rounded),
                 label: "Profile",
               ),
             ],

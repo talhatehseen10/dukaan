@@ -80,13 +80,13 @@ TextTheme buildTextTheme({
           //fontWeight: _light,
         ),
       ),
-      labelLarge: TextStyle(
+      labelLarge: GoogleFonts.poppins(
+          textStyle: TextStyle(
         fontSize: Sizes.TEXT_SIZE_14,
         color: buttonColor,
         fontStyle: FontStyle.normal,
-        fontFamily: AppStrings.WORK_SANS,
         fontWeight: _medium,
-      ),
+      )),
       bodySmall: GoogleFonts.poppins(
         textStyle: TextStyle(
           fontSize: Sizes.TEXT_SIZE_12,

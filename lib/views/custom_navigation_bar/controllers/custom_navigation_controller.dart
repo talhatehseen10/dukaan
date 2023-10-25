@@ -21,7 +21,7 @@ class CustomNavigationController extends GetxController {
   ].obs;
 
   late LoginFormController loginController;
-
+  
   @override
   void onInit() {
     loginController = Get.find<LoginFormController>();

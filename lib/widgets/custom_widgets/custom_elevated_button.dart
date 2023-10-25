@@ -50,8 +50,10 @@ class CustomElevatedButton extends StatelessWidget {
           text,
           style: themeController.isDark
               ? context.titleSmall
-              : context.titleSmall
-                  .copyWith(color: fontColor, fontWeight: FontWeight.w700),
+              : context.bodySmall.copyWith(
+                  color: fontColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: Sizes.TEXT_SIZE_16),
         ),
       ),
     );
