@@ -26,7 +26,7 @@ class LoginForm extends GetView<LoginFormController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      AppStrings.EMAIL_ADDRESS,
+                      AppStrings.PHONE_NO,
                       style: context.titleSmall,
                     ),
                   ],
@@ -35,7 +35,8 @@ class LoginForm extends GetView<LoginFormController> {
                   height: Sizes.HEIGHT_10,
                 ),
                 CustomTextField(
-                  controller: controller.emailController,
+                  controller: controller.phoneController,
+                  keyboaredtype: TextInputType.phone,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Required";
@@ -43,7 +44,7 @@ class LoginForm extends GetView<LoginFormController> {
                     return null;
                   },
                   fillColor: Colors.white,
-                  hintText: AppStrings.EMAIL_HINT_TEXT,
+                  hintText: AppStrings.PHONE_HINT_TEXT,
                 ),
               ],
             ),
@@ -123,7 +124,7 @@ class LoginForm extends GetView<LoginFormController> {
                           fontColor: AppColors.white,
                           onPressed: () {
                             if (controller.formKey.currentState!.validate()) {
-                              controller.loginUser();
+                              controller.userLogin();
                             }
                           },
                           text: AppStrings.LOG_IN,

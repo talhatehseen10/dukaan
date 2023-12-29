@@ -35,7 +35,8 @@ class RegisterForm extends GetView<RegisterFormController> {
                   height: Sizes.HEIGHT_10,
                 ),
                 CustomTextField(
-                  controller: controller.emailController,
+                  controller: controller.phoneController,
+                  keyboaredtype: TextInputType.phone,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Required";
@@ -140,7 +141,9 @@ class RegisterForm extends GetView<RegisterFormController> {
                           statusBarHeight: statusBarHeight,
                           fontColor: AppColors.white,
                           onPressed: () {
-                            if (controller.formKey.currentState!.validate()) {}
+                            if (controller.formKey.currentState!.validate()) {
+                              controller.register();
+                            }
                           },
                           text: AppStrings.REGISTER,
                           backgoundColor: LightTheme.buttonBackgroundColor2,

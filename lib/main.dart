@@ -12,6 +12,7 @@ import 'package:responsive_framework/utils/scroll_behavior.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialization();
+  
   runApp(
     const MyApp(),
   );

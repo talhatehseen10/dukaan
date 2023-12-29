@@ -46,6 +46,7 @@ dependencies:
   responsive_framework: ^0.2.0
   dotted_border:
   flutter_svg:
+  permission_handler:
   
 dev_dependencies:
   flutter_test:
