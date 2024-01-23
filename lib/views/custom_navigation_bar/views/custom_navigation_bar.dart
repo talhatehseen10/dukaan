@@ -15,7 +15,7 @@ class CustomNavigatorBar extends GetView<CustomNavigationController> {
       onDestinationSelected: (index) {
         controller.changeScreen(index);
       },
-      destinations: controller.loginController.phoneController.text == "vendor"
+      destinations: controller.loginController.userLoginData!.data!.role!.toLowerCase() == "vendor"
           ? [
               NavigationDestination(
                 selectedIcon: Icon(

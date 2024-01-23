@@ -3,6 +3,7 @@ import 'package:dukaan/extensions/context_extension.dart';
 import 'package:dukaan/routes/routes.dart';
 import 'package:dukaan/views/custom_navigation_bar/views/custom_navigation_bar.dart';
 import 'package:dukaan/views/vendor/product/controllers/product_controller.dart';
+import 'package:dukaan/views/vendor/product/models/data.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_app_bar.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
@@ -40,36 +41,42 @@ class Product extends GetView<ProductController> {
               : const SizedBox()),
       appBar: customAppBar(
           context: context, showLogo: true, automaticallyImplyLeading: false),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: Sizes.PADDING_2,
-              horizontal: Sizes.PADDING_24,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Obx(() => controller.isLoading.value
+          ? Center(
+              child: CircularProgressIndicator(
+                color: context.primaryColor,
+              ),
+            )
+          : Column(
               children: [
-                Text(
-                  "Beauty Products",
-                  style: context.bodySmall.copyWith(
-                      fontSize: Sizes.TEXT_SIZE_14,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.grey),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: Sizes.PADDING_2,
+                    horizontal: Sizes.PADDING_24,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Beauty Products",
+                        style: context.bodySmall.copyWith(
+                            fontSize: Sizes.TEXT_SIZE_14,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey),
+                      ),
+                      Text(
+                        "See All",
+                        style: context.bodySmall.copyWith(
+                            fontSize: Sizes.TEXT_SIZE_14,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.secondaryColor),
+                      ),
+                    ],
+                  ),
                 ),
-                Text(
-                  "See All",
-                  style: context.bodySmall.copyWith(
-                      fontSize: Sizes.TEXT_SIZE_14,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.secondaryColor),
-                ),
+                tab(context, controller),
               ],
-            ),
-          ),
-          tab(context),
-        ],
-      ),
+            )),
     );
   }
 }
@@ -123,15 +130,17 @@ Widget _bottomContainer(BuildContext context, ProductController controller) {
   );
 }
 
-Widget tab(BuildContext context) {
+Widget tab(BuildContext context, ProductController controller) {
   return Expanded(
     child: ListView.builder(
       padding: const EdgeInsets.symmetric(
         vertical: Sizes.PADDING_10,
         horizontal: Sizes.PADDING_24,
       ),
-      itemCount: 10,
+      itemCount: controller.products!.data!.length,
       itemBuilder: (context, index) {
+        Data _product = controller.products!.data![index];
+
         return Container(
           margin: const EdgeInsets.only(
             bottom: Sizes.PADDING_10,
@@ -167,8 +176,31 @@ Widget tab(BuildContext context) {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Product Code: ",
+                          style: context.bodySmall.copyWith(
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(
+                            _product.pCode!,
+                            style: context.bodySmall.copyWith(
+                              fontWeight: FontWeight.w400,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: Sizes.HEIGHT_6,
+                    ),
                     Text(
-                      "Delivered To: Aqsa Jamali",
+                      "Category. ${_product.category!.pcName}",
                       style: context.bodySmall.copyWith(
                         fontWeight: FontWeight.w400,
                       ),
@@ -177,16 +209,7 @@ Widget tab(BuildContext context) {
                       height: Sizes.HEIGHT_6,
                     ),
                     Text(
-                      "Order No. 1321123",
-                      style: context.bodySmall.copyWith(
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: Sizes.HEIGHT_6,
-                    ),
-                    Text(
-                      "Rs: 1340",
+                      "Rs: ${_product.pPrice}",
                       style: context.bodySmall.copyWith(
                           fontWeight: FontWeight.w600,
                           color: AppColors.secondaryColor),

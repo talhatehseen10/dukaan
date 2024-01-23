@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   late CustomNavigationController customNavigationController;
-
+  
   @override
   void onInit() {
     customNavigationController = Get.find<CustomNavigationController>();

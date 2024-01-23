@@ -31,7 +31,7 @@ class CustomNavigationController extends GetxController {
   changeScreen(int index) {
     widgetRefresh.value = true;
     selectedIndex.value = index;
-    if (loginController.phoneController.text == "vendor") {
+    if (loginController.userLoginData!.data!.role!.toLowerCase() == "vendor") {
       if (Get.currentRoute != vendorScreens[index]) {
         Get.offAndToNamed(vendorScreens[index]);
       }

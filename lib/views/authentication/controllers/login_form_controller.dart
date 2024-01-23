@@ -6,9 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:dukaan/constants/constants.dart';
-// import 'package:dukaan/routes/app_routes.dart';
-// import 'package:dukaan/services/api/api_constants.dart';
-//import 'package:dukaan/services/api/base_client.dart';
 
 class LoginFormController extends GetxController {
   final box = GetStorage(AppStrings.COMPANY_ID);
@@ -27,8 +24,8 @@ class LoginFormController extends GetxController {
 
   @override
   void onInit() {
-    phoneController = TextEditingController();
-    passwordController = TextEditingController();
+    phoneController = TextEditingController(text: "03123123123");
+    passwordController = TextEditingController(text: "seller123");
     super.onInit();
   }
 
@@ -57,7 +54,11 @@ class LoginFormController extends GetxController {
     isLoading.value = true;
     userLoginData = LoginModel.fromJson(data);
     isLoading.value = false;
-    Get.toNamed(AppRoutes.HOME_VENDOR);
+    if (userLoginData!.data!.role!.toLowerCase() == "vendor") {
+      Get.toNamed(AppRoutes.HOME_VENDOR);
+    } else {
+      Get.toNamed(AppRoutes.HOME);
+    }
   }
 
   // void loginUser() {

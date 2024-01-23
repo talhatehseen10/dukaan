@@ -96,7 +96,7 @@ class Profile extends GetView<ProfileController> {
             _accountOptions(context, "Favroite", Icons.arrow_forward_ios),
             GestureDetector(
                 onTap: () {
-                  Get.back();
+                  controller.userLogout();
                 },
                 child: _accountOptions(context, "Log out", Icons.logout)),
           ],

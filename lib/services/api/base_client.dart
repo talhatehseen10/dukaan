@@ -7,18 +7,21 @@ import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/services/api/api_exceptions.dart';
 import 'package:dukaan/utils/custom_snackbar.dart';
 
-enum RequestType {
-  get,
-  post,
-  put,
-  delete,
-  patch
-}
+enum RequestType { get, post, put, delete, patch }
 
 class BaseClient {
   static Future<Map<String, dynamic>> generateHeaders() async {
     Map<String, String> headers = {
       'Content-Type': 'application/json',
+    };
+    return headers;
+  }
+
+  static Future<Map<String, dynamic>> generateHeadersWithToken(
+      {String? token}) async {
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer $token",
     };
     return headers;
   }
