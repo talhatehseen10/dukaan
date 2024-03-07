@@ -6,8 +6,6 @@ import 'dart:convert';
 
 import 'package:dukaan/views/home/models/data.dart';
 
-
-
 Products productsFromJson(String str) => Products.fromJson(json.decode(str));
 
 String productsToJson(Products data) => json.encode(data.toJson());
@@ -15,7 +13,7 @@ String productsToJson(Products data) => json.encode(data.toJson());
 class Products {
     bool? success;
     String? msg;
-    Data? data;
+    List<Datum>? data;
 
     Products({
         this.success,
@@ -26,15 +24,17 @@ class Products {
     factory Products.fromJson(Map<String, dynamic> json) => Products(
         success: json["success"],
         msg: json["msg"],
-        data: json["data"] == null ? null : Data.fromJson(json["data"]),
+        data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
         "success": success,
         "msg": msg,
-        "data": data?.toJson(),
+        "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
     };
 }
+
+
 
 
 

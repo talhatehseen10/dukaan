@@ -1,3 +1,4 @@
+import 'package:dukaan/preferences/preferences.dart';
 import 'package:dukaan/services/api/api_constants.dart';
 import 'package:dukaan/services/api/base_client.dart';
 import 'package:dukaan/views/custom_navigation_bar/controllers/custom_navigation_controller.dart';
@@ -20,7 +21,8 @@ class HomeController extends GetxController {
     await BaseClient.safeApiCall(
       ApiConstants.PRODUCTS,
       RequestType.get,
-      headers: await BaseClient.generateHeaders(),
+      headers: await BaseClient.generateHeadersWithToken(
+          token: Preferences().getToken()),
       queryParameters: {
         "summary": true,
       },

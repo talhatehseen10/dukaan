@@ -139,7 +139,7 @@ Widget tab(BuildContext context, ProductController controller) {
       ),
       itemCount: controller.products!.data!.length,
       itemBuilder: (context, index) {
-        Data _product = controller.products!.data![index];
+        Data product = controller.products!.data![index];
 
         return Container(
           margin: const EdgeInsets.only(
@@ -179,14 +179,14 @@ Widget tab(BuildContext context, ProductController controller) {
                     Row(
                       children: [
                         Text(
-                          "Product Code: ",
+                          "Product Name: ",
                           style: context.bodySmall.copyWith(
                             fontWeight: FontWeight.w400,
                           ),
                         ),
                         Expanded(
                           child: Text(
-                            _product.pCode!,
+                            product.pName!,
                             style: context.bodySmall.copyWith(
                               fontWeight: FontWeight.w400,
                             ),
@@ -200,7 +200,7 @@ Widget tab(BuildContext context, ProductController controller) {
                       height: Sizes.HEIGHT_6,
                     ),
                     Text(
-                      "Category. ${_product.category!.pcName}",
+                      "Category. ${product.category!.pcName}",
                       style: context.bodySmall.copyWith(
                         fontWeight: FontWeight.w400,
                       ),
@@ -209,7 +209,7 @@ Widget tab(BuildContext context, ProductController controller) {
                       height: Sizes.HEIGHT_6,
                     ),
                     Text(
-                      "Rs: ${_product.pPrice}",
+                      "Rs: 0.00",
                       style: context.bodySmall.copyWith(
                           fontWeight: FontWeight.w600,
                           color: AppColors.secondaryColor),

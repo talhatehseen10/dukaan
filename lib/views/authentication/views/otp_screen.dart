@@ -1,14 +1,21 @@
 import 'dart:async';
 import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/extensions/context_extension.dart';
-import 'package:dukaan/views/authentication/components/otp_digit_container.dart';
+import 'package:dukaan/services/api/api_constants.dart';
+import 'package:dukaan/services/api/base_client.dart';
+import 'package:dukaan/widgets/custom_widgets/loading_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class OtpAutoFill extends StatefulWidget {
-  const OtpAutoFill({Key? key}) : super(key: key);
+  const OtpAutoFill({Key? key, required this.phoneNumber, required this.userId})
+      : super(key: key);
 
+  final String phoneNumber;
+  final String userId;
   @override
   State<OtpAutoFill> createState() => _OtpAutoFillState();
 }
@@ -67,8 +74,117 @@ class _OtpAutoFillState extends State<OtpAutoFill> {
     }
   }
 
+  Future<void> generateOTP() async {
+    await BaseClient.safeApiCall(
+      ApiConstants.SEND_OTP,
+      RequestType.get,
+      headers: await BaseClient.generateHeaders(),
+      queryParameters: {"phoneNumber": widget.phoneNumber},
+      onSuccess: (response) {
+        Get.back();
+        Get.snackbar(
+          "OTP",
+          "OTP sent successfully",
+          icon: const Icon(
+            Icons.check,
+            color: Colors.green,
+            size: Sizes.ICON_SIZE_20,
+          ),
+        );
+      },
+      onLoading: () {
+        loadingDialog("Sending OTP..");
+      },
+      onError: (e) {
+        Get.back();
+        Get.snackbar(
+          "Error",
+          "${e.response!.data["msg"]}",
+          icon: const Icon(
+            Icons.error,
+            color: Colors.red,
+            size: Sizes.ICON_SIZE_20,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> resendOTP() async {
+    await BaseClient.safeApiCall(
+      ApiConstants.RESEND_OTP,
+      RequestType.get,
+      headers: await BaseClient.generateHeaders(),
+      queryParameters: {"user_id": widget.userId},
+      onSuccess: (response) {
+        Get.back();
+        Get.snackbar(
+          "OTP",
+          "OTP sent successfully",
+          icon: const Icon(
+            Icons.check,
+            color: Colors.green,
+            size: Sizes.ICON_SIZE_20,
+          ),
+        );
+      },
+      onLoading: () {
+        loadingDialog("Sending OTP..");
+      },
+      onError: (e) {
+        Get.back();
+        Get.snackbar(
+          "Error",
+          "${e.response!.data["msg"]}",
+          icon: const Icon(
+            Icons.error,
+            color: Colors.red,
+            size: Sizes.ICON_SIZE_20,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> verifyOTP(String otp) async {
+    await BaseClient.safeApiCall(
+      ApiConstants.VERIFY_OTP,
+      RequestType.get,
+      headers: await BaseClient.generateHeaders(),
+      queryParameters: {"user_id": widget.userId, "otp": otp},
+      onSuccess: (response) {
+        Get.back();
+        Get.snackbar(
+          "OTP",
+          "${response.data["msg"]}",
+          icon: const Icon(
+            Icons.check,
+            color: Colors.green,
+            size: Sizes.ICON_SIZE_20,
+          ),
+        );
+      },
+      onLoading: () {
+        loadingDialog("Sending OTP..");
+      },
+      onError: (e) {
+        Get.back();
+        Get.snackbar(
+          "Error",
+          "${e.response!.data["msg"]}",
+          icon: const Icon(
+            Icons.error,
+            color: Colors.red,
+            size: Sizes.ICON_SIZE_20,
+          ),
+        );
+      },
+    );
+  }
+
   @override
   void initState() {
+    generateOTP();
     _smsReadPermission();
     super.initState();
   }
@@ -105,7 +221,7 @@ class _OtpAutoFillState extends State<OtpAutoFill> {
               height: Sizes.HEIGHT_10,
             ),
             Text(
-              'We’ve sent an SMS with an activation code to your phone +92 348 0349491',
+              "We`ve sent an SMS with an activation code to your phone ${widget.phoneNumber}",
               style: context.bodySmall.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(
@@ -119,14 +235,29 @@ class _OtpAutoFillState extends State<OtpAutoFill> {
             const SizedBox(
               height: 30,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                OtpDigitContainer(digit: otp[0]),
-                OtpDigitContainer(digit: otp[1]),
-                OtpDigitContainer(digit: otp[2]),
-                OtpDigitContainer(digit: otp[3]),
-              ],
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //   children: [
+            //     OtpDigitContainer(digit: otp[0]),
+            //     OtpDigitContainer(digit: otp[1]),
+            //     OtpDigitContainer(digit: otp[2]),
+            //     OtpDigitContainer(digit: otp[3]),
+            //   ],
+            // ),
+            OtpTextField(
+              numberOfFields: 4,
+              fieldWidth: Sizes.WIDTH_60,
+              borderColor: context.dividerColor,
+              borderRadius: BorderRadius.circular(Sizes.RADIUS_10),
+              margin: const EdgeInsets.only(right: Sizes.MARGIN_20),
+              //set to true to show as box or false to show as dash
+              showFieldAsBox: true,
+              //runs when a code is typed in
+              onCodeChanged: (String code) {},
+              //runs when every textfield is filled
+              onSubmit: (String verificationCode) {
+                verifyOTP(verificationCode);
+              }, // end onSubmit
             ),
             const SizedBox(
               height: Sizes.HEIGHT_60,
@@ -134,9 +265,14 @@ class _OtpAutoFillState extends State<OtpAutoFill> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Send Code Again",
-                  style: context.bodyMedium,
+                GestureDetector(
+                  onTap: () {
+                    resendOTP();
+                  },
+                  child: Text(
+                    "Send Code Again",
+                    style: context.bodyMedium,
+                  ),
                 ),
               ],
             )

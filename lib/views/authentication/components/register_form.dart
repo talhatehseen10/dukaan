@@ -104,7 +104,7 @@ class RegisterForm extends GetView<RegisterFormController> {
                   height: Sizes.HEIGHT_10,
                 ),
                 CustomTextField(
-                  controller: controller.passwordController,
+                  controller: controller.confirmPasswordController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Required";

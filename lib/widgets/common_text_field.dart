@@ -72,6 +72,7 @@ class CustomTextField extends StatelessWidget {
       style: context.bodySmall.copyWith(
         color: AppColors.blackShade8,
       ),
+      textAlignVertical: TextAlignVertical.center,
       keyboardType: keyboaredtype ?? TextInputType.emailAddress,
       controller: controller,
       focusNode: focusNode,

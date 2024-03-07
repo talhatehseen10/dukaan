@@ -12,10 +12,8 @@ import 'package:responsive_framework/utils/scroll_behavior.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialization();
-  
-  runApp(
-    const MyApp(),
-  );
+
+  runApp(const MyApp());
 }
 
 Future initialization() async {
@@ -43,7 +41,7 @@ class MyApp extends GetView<ThemeController> {
           child: ResponsiveWrapper.builder(
             MediaQuery(
               // prevent font from scaling (some people use big/small device fonts)
-              // but we want our app font to still the same and dont get affected..
+              // but we want our app font to still the same and don`t get affected..
               data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
               child: BouncingScrollWrapper.builder(context, widget!),
             ),

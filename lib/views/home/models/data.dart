@@ -1,18 +1,21 @@
+import 'package:dukaan/views/home/models/product.dart';
 
-import 'package:dukaan/views/home/models/category.dart';
+class Datum {
+    String? categoryName;
+    List<Product>? products;
 
-class Data {
-    Electronics? electronics;
-
-    Data({
-        this.electronics,
+    Datum({
+        this.categoryName,
+        this.products,
     });
 
-    factory Data.fromJson(Map<String, dynamic> json) => Data(
-        electronics: json["Electronics"] == null ? null : Electronics.fromJson(json["Electronics"]),
+    factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+        categoryName: json["categoryName"],
+        products: json["products"] == null ? [] : List<Product>.from(json["products"]!.map((x) => Product.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
-        "Electronics": electronics?.toJson(),
+        "categoryName": categoryName,
+        "products": products == null ? [] : List<dynamic>.from(products!.map((x) => x.toJson())),
     };
 }

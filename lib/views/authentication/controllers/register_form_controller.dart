@@ -13,12 +13,14 @@ class RegisterFormController extends GetxController {
   final formKey = GlobalKey<FormState>();
   late TextEditingController phoneController;
   late TextEditingController passwordController;
+  late TextEditingController confirmPasswordController;
   String? showSwitchTile;
 
   @override
   void onInit() {
     phoneController = TextEditingController();
     passwordController = TextEditingController();
+    confirmPasswordController = TextEditingController();
     super.onInit();
   }
 
@@ -26,6 +28,7 @@ class RegisterFormController extends GetxController {
   void dispose() {
     phoneController.dispose();
     passwordController.dispose();
+    confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -38,7 +41,7 @@ class RegisterFormController extends GetxController {
         "name": "admin",
         "phoneNumber": phoneController.text,
         "password": passwordController.text,
-        "password_confirmation": passwordController.text
+        "password_confirmation": confirmPasswordController.text
       },
       onSuccess: (response) {
         addUserLoginData(response.data);
@@ -47,6 +50,7 @@ class RegisterFormController extends GetxController {
         isLoading.value = true;
       },
       onError: (e) {
+        Get.snackbar("Warning", "${e.response!.data["msg"]}");
         isLoading.value = false;
       },
     );
@@ -54,6 +58,9 @@ class RegisterFormController extends GetxController {
 
   void addUserLoginData(Map<String, dynamic> data) {
     isLoading.value = false;
-    Get.to(() => const OtpAutoFill());
+    Get.to(() => OtpAutoFill(
+          phoneNumber: phoneController.text,
+          userId: data["data"]["user_id"].toString(),
+        ));
   }
 }

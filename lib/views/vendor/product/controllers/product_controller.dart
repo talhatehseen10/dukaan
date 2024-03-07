@@ -1,3 +1,4 @@
+import 'package:dukaan/preferences/preferences.dart';
 import 'package:dukaan/services/api/api_constants.dart';
 import 'package:dukaan/services/api/base_client.dart';
 import 'package:dukaan/views/vendor/product/models/products.dart';
@@ -17,9 +18,10 @@ class ProductController extends GetxController {
 
   Future<void> getProduct() async {
     await BaseClient.safeApiCall(
-      ApiConstants.ADD_PRODUCT,
+      ApiConstants.PRODUCTS,
       RequestType.get,
-      headers: await BaseClient.generateHeaders(),
+      headers: await BaseClient.generateHeadersWithToken(
+          token: Preferences().getToken()),
       onSuccess: (response) {
         addProducts(response.data);
       },

@@ -87,7 +87,7 @@ class CustomDropDownButton extends StatelessWidget {
                 label: Text(
                   "$hintText",
                   style:
-                      context.bodyMedium.copyWith(fontWeight: FontWeight.w600),
+                      context.bodySmall,
                 ),
 
                 dropdownMenuEntries: items!.map((String value) {
@@ -150,7 +150,7 @@ class CustomDropDownButton extends StatelessWidget {
                 fillColor: fillColor,
                 labelText: "$hintText",
                 labelStyle: context.bodySmall.copyWith(
-                    fontWeight: FontWeight.bold, fontSize: Sizes.TEXT_SIZE_14),
+                     fontSize: Sizes.TEXT_SIZE_14),
               ),
               value: value,
               isDense: true,
@@ -165,8 +165,7 @@ class CustomDropDownButton extends StatelessWidget {
                         value: value,
                         child: Text(
                           value,
-                          style: context.bodySmall
-                              .copyWith(color: AppColors.black),
+                          style: context.bodySmall,
                         ),
                       );
                     }).toList()

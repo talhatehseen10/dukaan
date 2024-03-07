@@ -1,3 +1,4 @@
+import 'package:dukaan/preferences/preferences.dart';
 import 'package:dukaan/routes/routes.dart';
 import 'package:dukaan/services/api/api_constants.dart';
 import 'package:dukaan/services/api/base_client.dart';
@@ -24,8 +25,8 @@ class LoginFormController extends GetxController {
 
   @override
   void onInit() {
-    phoneController = TextEditingController(text: "03123123123");
-    passwordController = TextEditingController(text: "seller123");
+    phoneController = TextEditingController(text: "03123456789");
+    passwordController = TextEditingController(text: "admin123");
     super.onInit();
   }
 
@@ -53,6 +54,7 @@ class LoginFormController extends GetxController {
   void addUserLoginData(Map<String, dynamic> data) {
     isLoading.value = true;
     userLoginData = LoginModel.fromJson(data);
+    Preferences().setUserToken(userLoginData!.data!.token!);
     isLoading.value = false;
     if (userLoginData!.data!.role!.toLowerCase() == "vendor") {
       Get.toNamed(AppRoutes.HOME_VENDOR);

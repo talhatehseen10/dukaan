@@ -1,4 +1,4 @@
-import 'package:dukaan/constants/constants.dart';
+import 'package:dukaan/widgets/common_text_field.dart';
 import 'package:flutter/material.dart';
 
 class OtpDigitContainer extends StatelessWidget {
@@ -15,18 +15,15 @@ class OtpDigitContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(13),
       ),
       child: Container(
-        height: 60,
         width: 60,
         decoration: BoxDecoration(
           color: Colors.white,
-          border: Border.all(color: AppColors.black),
+          // border: Border.all(color: AppColors.black),
           borderRadius: BorderRadius.circular(13),
         ),
         child: Center(
-          child: Text(
-            digit,
-            style: const TextStyle(
-                color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+          child: CustomTextField(
+            keyboaredtype: TextInputType.number,
           ),
         ),
       ),

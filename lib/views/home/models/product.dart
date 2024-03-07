@@ -1,34 +1,21 @@
-
-import 'package:dukaan/views/home/models/image.dart';
+import 'package:dukaan/views/home/models/variant.dart';
 
 class Product {
-    int? id;
-    String? name;
-    String? rating;
-    String? price;
-    Images? images;
+    String? productName;
+    List<Variant>? variants;
 
     Product({
-        this.id,
-        this.name,
-        this.rating,
-        this.price,
-        this.images,
+        this.productName,
+        this.variants,
     });
 
     factory Product.fromJson(Map<String, dynamic> json) => Product(
-        id: json["id"],
-        name: json["name"],
-        rating: json["rating"],
-        price: json["price"],
-        images: json["images"] == null ? null : Images.fromJson(json["images"]),
+        productName: json["productName"],
+        variants: json["variants"] == null ? [] : List<Variant>.from(json["variants"]!.map((x) => Variant.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "rating": rating,
-        "price": price,
-        "images": images?.toJson(),
+        "productName": productName,
+        "variants": variants == null ? [] : List<dynamic>.from(variants!.map((x) => x.toJson())),
     };
 }

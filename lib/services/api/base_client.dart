@@ -26,6 +26,16 @@ class BaseClient {
     return headers;
   }
 
+  static Future<Map<String, dynamic>> generateHeadersForFileWithToken(
+      {String? token}) async {
+    Map<String, String> headers = {
+      'accept': "*/*",
+      'Content-Type': 'multipart/form-data',
+      'Authorization': "Bearer $token",
+    };
+    return headers;
+  }
+
   static final Dio _dio = Dio()
     ..interceptors.add(
       PrettyDioLogger(
