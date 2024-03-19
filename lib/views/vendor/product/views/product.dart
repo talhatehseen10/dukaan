@@ -1,7 +1,7 @@
 import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/extensions/context_extension.dart';
 import 'package:dukaan/routes/routes.dart';
-import 'package:dukaan/views/custom_navigation_bar/views/custom_navigation_bar.dart';
+import 'package:dukaan/views/seller/custom_navigation_bar/views/custom_navigation_bar.dart';
 import 'package:dukaan/views/vendor/product/controllers/product_controller.dart';
 import 'package:dukaan/views/vendor/product/models/data.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_app_bar.dart';
@@ -13,6 +13,7 @@ class Product extends GetView<ProductController> {
   const Product({super.key});
 
   static const String routeName = "/product_vendor";
+
   @override
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/extensions/context_extension.dart';
-import 'package:dukaan/views/custom_navigation_bar/views/custom_navigation_bar.dart';
+import 'package:dukaan/views/seller/custom_navigation_bar/views/custom_navigation_bar.dart';
 import 'package:dukaan/views/vendor/orders/controllers/orders_controller.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_app_bar.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_elevated_button.dart';

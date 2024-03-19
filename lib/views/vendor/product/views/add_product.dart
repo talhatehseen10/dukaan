@@ -7,9 +7,7 @@ import 'package:dukaan/widgets/common_text_field.dart';
 import 'package:dukaan/widgets/custom_dropdown_button.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_app_bar.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_elevated_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class AddProduct extends GetView<AddProductController> {

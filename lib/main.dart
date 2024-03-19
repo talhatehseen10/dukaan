@@ -2,7 +2,7 @@ import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/routes/routes.dart';
 import 'package:dukaan/themes/controller/theme_controller.dart';
 import 'package:dukaan/views/authentication/controllers/login_form_controller.dart';
-import 'package:dukaan/views/custom_navigation_bar/controllers/custom_navigation_controller.dart';
+import 'package:dukaan/views/seller/custom_navigation_bar/controllers/custom_navigation_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -42,7 +42,8 @@ class MyApp extends GetView<ThemeController> {
             MediaQuery(
               // prevent font from scaling (some people use big/small device fonts)
               // but we want our app font to still the same and don`t get affected..
-              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              data: MediaQuery.of(context)
+                  .copyWith(textScaler: const TextScaler.linear(1.0)),
               child: BouncingScrollWrapper.builder(context, widget!),
             ),
             defaultScale: true,

@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/extensions/context_extension.dart';
-import 'package:dukaan/views/custom_navigation_bar/views/custom_navigation_bar.dart';
+import 'package:dukaan/views/seller/custom_navigation_bar/views/custom_navigation_bar.dart';
 import 'package:dukaan/views/vendor/home/controllers/home_controller.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +11,7 @@ class Home extends GetView<HomeController> {
   const Home({super.key});
 
   static const String routeName = "/home";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

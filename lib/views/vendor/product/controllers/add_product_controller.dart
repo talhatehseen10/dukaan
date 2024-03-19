@@ -5,6 +5,7 @@ import 'package:dukaan/services/api/base_client.dart';
 import 'package:dukaan/views/vendor/product/controllers/product_controller.dart';
 import 'package:dukaan/views/vendor/product/models/add_products_models/drop_down_values.dart';
 import 'package:dukaan/views/vendor/product/models/add_products_models/measure_unit_product.dart';
+import 'package:dukaan/views/vendor/product/models/add_products_models/product_variant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -39,6 +40,8 @@ class AddProductController extends GetxController {
   late TextEditingController varQtyAvail;
   late TextEditingController varSellerMargin;
   String? measurementValue;
+  ProductVariant? productVariant;
+  RxBool productVariantRefresh = true.obs;
 
   @override
   void onInit() {
@@ -187,6 +190,7 @@ class AddProductController extends GetxController {
       data: data,
       onSuccess: (response) {
         if (response.data["success"]) {
+          addProductVariant(response.data);
           Get.snackbar("Success", response.data["msg"]);
           showVariantList.value = true;
         } else {
@@ -217,5 +221,9 @@ class AddProductController extends GetxController {
       "var_seller_margin": varSellerMargin.text
     });
     createProductVariant(formData);
+  }
+
+  void addProductVariant(response) {
+    productVariant = ProductVariant.fromJson(response);
   }
 }

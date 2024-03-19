@@ -1,11 +1,12 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/extensions/context_extension.dart';
+import 'package:dukaan/services/api/api_constants.dart';
 import 'package:dukaan/views/vendor/product/controllers/add_product_controller.dart';
+import 'package:dukaan/views/vendor/product/models/add_products_models/product_variant_element.dart';
 import 'package:dukaan/widgets/common_text_field.dart';
 import 'package:dukaan/widgets/custom_dropdown_button.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_elevated_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,80 +14,94 @@ Widget variant(BuildContext context, AddProductController controller) {
   return Column(
     children: [
       Obx(() => controller.showVariantList.value
-          ? SizedBox(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: 2,
-                itemBuilder: (context, index) {
-                  return Container(
-                    height: Sizes.HEIGHT_90,
-                    width: Get.width * 1,
-                    margin:
-                        const EdgeInsets.symmetric(vertical: Sizes.MARGIN_6),
-                    padding: const EdgeInsets.all(Sizes.PADDING_8),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(Sizes.RADIUS_6),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: Sizes.HEIGHT_74,
-                          width: Sizes.WIDTH_74,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(Sizes.RADIUS_8),
-                            image: const DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage("assets/image2.png"),
+          ? controller.isLoading.value
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : controller.productVariant == null
+                  ? const SizedBox()
+                  : SizedBox(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: controller
+                            .productVariant!.data!.productVariants!.length,
+                        itemBuilder: (context, index) {
+                          ProductVariantElement data = controller
+                              .productVariant!.data!.productVariants![index];
+                          return Container(
+                            height: Sizes.HEIGHT_90,
+                            width: Get.width * 1,
+                            margin: const EdgeInsets.symmetric(
+                                vertical: Sizes.MARGIN_6),
+                            padding: const EdgeInsets.all(Sizes.PADDING_8),
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade100,
+                              borderRadius:
+                                  BorderRadius.circular(Sizes.RADIUS_6),
                             ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: Sizes.WIDTH_12,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Text(
-                                "1 Pcs IKI B beauty  Product for girls Use",
-                                style: context.bodySmall,
-                              ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: Sizes.HEIGHT_74,
+                                  width: Sizes.WIDTH_74,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.circular(Sizes.RADIUS_8),
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                          ApiConstants.BASE_URL_IMAGE +
+                                              data.imageUrl!),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: Sizes.WIDTH_12,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        data.varName!,
+                                        style: context.bodySmall,
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        "Rs ${data.varPrice}",
+                                        style: context.bodyMedium,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  width: Sizes.WIDTH_12,
+                                ),
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    const Icon(
+                                      Icons.delete_outline,
+                                      color: AppColors.secondaryColor,
+                                    ),
+                                    Text(
+                                      "${data.varMeasurementValue} ${data.varMeasurementUnit}",
+                                      style: context.bodyMedium.copyWith(
+                                          color: AppColors.secondaryColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )
+                              ],
                             ),
-                            Expanded(
-                              child: Text(
-                                "Rs 1230",
-                                style: context.bodyMedium,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          width: Sizes.WIDTH_12,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            const Icon(
-                              Icons.delete_outline,
-                              color: AppColors.secondaryColor,
-                            ),
-                            Text(
-                              "130 ml",
-                              style: context.bodyMedium.copyWith(
-                                  color: AppColors.secondaryColor,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  );
-                },
-              ),
-            )
+                          );
+                        },
+                      ),
+                    )
           : SizedBox(
               child: Column(
                 children: [
@@ -234,7 +249,12 @@ Widget variant(BuildContext context, AddProductController controller) {
             child: CustomElevatedButton(
               text: "Add Variant",
               onPressed: () {
-                controller.createVariant();
+                if (controller.showVariantList.value) {
+                  controller.showVariantList.value =
+                      !controller.showVariantList.value;
+                } else {
+                  controller.createVariant();
+                }
               },
             ),
           ),
