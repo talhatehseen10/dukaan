@@ -3,6 +3,7 @@ import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/extensions/context_extension.dart';
 import 'package:dukaan/views/seller/custom_navigation_bar/views/custom_navigation_bar.dart';
 import 'package:dukaan/views/vendor/home/controllers/home_controller.dart';
+import 'package:dukaan/views/vendor/home/models/metric.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,91 +44,90 @@ class Home extends GetView<HomeController> {
               ),
             ),
           ]),
-      body: Column(
-        children: [
-          CarouselSlider(
-            items: [
-              Container(
-                height: Sizes.HEIGHT_200,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.blueGrey.shade200,
-                  borderRadius: BorderRadius.circular(Sizes.RADIUS_6),
-                  image: const DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("assets/slider_image.jpeg"),
-                  ),
-                ),
+      body: Obx(() => controller.isLoading.value
+          ? Center(
+              child: CircularProgressIndicator(
+                color: context.primaryColor,
               ),
-              Container(
-                height: Sizes.HEIGHT_200,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.blueGrey.shade200,
-                  borderRadius: BorderRadius.circular(Sizes.RADIUS_6),
-                  image: const DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("assets/slider_image.jpeg"),
-                  ),
-                ),
-              ),
-            ],
-            options: CarouselOptions(
-              autoPlay: true,
-              enlargeCenterPage: true,
-              viewportFraction: 0.9,
-              aspectRatio: 1.7,
-              initialPage: 2,
-            ),
-          ),
-          Expanded(
-            child: GridView.builder(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: Sizes.PADDING_24),
-                itemCount: 5,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 2 / 1.8,
-                    crossAxisCount: 2,
-                    mainAxisSpacing: Sizes.PADDING_16,
-                    crossAxisSpacing: Sizes.PADDING_16),
-                itemBuilder: (context, index) {
-                  return Container(
-                    height: Sizes.HEIGHT_150,
-                    padding: const EdgeInsets.all(Sizes.PADDING_16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Sizes.RADIUS_6),
-                      color: Colors.grey.shade200,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Orders \nDelivered",
-                          style: context.bodySmall.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xff6C6C6C),
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "24",
-                              style: context.titleSmall.copyWith(
-                                fontSize: Sizes.TEXT_SIZE_24,
-                                color: AppColors.secondaryColor,
+            )
+          : Column(
+              children: [
+                CarouselSlider(
+                  items: controller.dashboard!.data!.banners!
+                      .map((e) => Container(
+                            height: Sizes.HEIGHT_200,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.blueGrey.shade200,
+                              borderRadius:
+                                  BorderRadius.circular(Sizes.RADIUS_6),
+                              image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image:
+                                    NetworkImage(AppAssets.getNetworkImage(e)),
                               ),
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  );
-                }),
-          ),
-        ],
-      ),
+                          ))
+                      .toList(),
+                  options: CarouselOptions(
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    viewportFraction: 0.9,
+                    aspectRatio: 1.7,
+                    initialPage: 2,
+                  ),
+                ),
+                Expanded(
+                  child: GridView.builder(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: Sizes.PADDING_24),
+                      itemCount: controller.dashboard!.data!.metrics!.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              childAspectRatio: 2 / 1.8,
+                              crossAxisCount: 2,
+                              mainAxisSpacing: Sizes.PADDING_16,
+                              crossAxisSpacing: Sizes.PADDING_16),
+                      itemBuilder: (context, index) {
+                        Metric data =
+                            controller.dashboard!.data!.metrics![index];
+                        return Container(
+                          height: Sizes.HEIGHT_150,
+                          padding: const EdgeInsets.all(Sizes.PADDING_16),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(Sizes.RADIUS_6),
+                            color: Colors.grey.shade200,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                data.name ?? "",
+                                style: context.bodySmall.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: const Color(0xff6C6C6C),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    data.value!.toString(),
+                                    style: context.titleSmall.copyWith(
+                                      fontSize: Sizes.TEXT_SIZE_24,
+                                      color: AppColors.secondaryColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
+                      }),
+                ),
+              ],
+            )),
     );
   }
 }

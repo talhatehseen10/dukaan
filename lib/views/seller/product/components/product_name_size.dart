@@ -138,7 +138,9 @@ Widget productNameSize(
                                       left: Sizes.PADDING_10)
                                   : EdgeInsets.zero,
                               decoration: BoxDecoration(
-                                color: const Color(0xffFFE9E9),
+                                border: controller.varId.value == ""
+                                    ? null
+                                    : Border.all(color: AppColors.black),
                                 image: DecorationImage(
                                     fit: BoxFit.fill,
                                     image: NetworkImage(

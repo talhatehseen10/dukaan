@@ -1,13 +1,17 @@
 import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/extensions/context_extension.dart';
-import 'package:dukaan/routes/routes.dart';
+import 'package:dukaan/views/seller/my_bag/components/bottom_container.dart';
+import 'package:dukaan/views/seller/my_bag/components/item_increment.dart';
+import 'package:dukaan/views/seller/my_bag/controllers/my_bag_controller.dart';
+import 'package:dukaan/views/seller/my_bag/models/bag_item_data.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_app_bar.dart';
-import 'package:dukaan/widgets/custom_widgets/custom_elevated_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class MyBag extends StatelessWidget {
+class MyBag extends GetView<MyBagController> {
   const MyBag({super.key});
+
   static const String routeName = "/my_bag";
 
   @override
@@ -15,11 +19,19 @@ class MyBag extends StatelessWidget {
     return Scaffold(
       appBar: customAppBar(
           context: context, title: "My Bag", automaticallyImplyLeading: true),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.separated(
+      bottomNavigationBar: bottomContainer(context, controller),
+      body: Obx(
+        () => controller.isLoading.value
+            ? Center(
+                child: CircularProgressIndicator(
+                  color: context.primaryColor,
+                ),
+              )
+            : ListView.separated(
+                shrinkWrap: true,
+                itemCount: controller.bagItems!.data!.length,
                 itemBuilder: (context, index) {
+                  BagItemData data = controller.bagItems!.data![index];
                   return Container(
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(
@@ -44,9 +56,12 @@ class MyBag extends StatelessWidget {
                                       border: Border.all(
                                         color: context.primaryColor,
                                       ),
-                                      image: const DecorationImage(
+                                      image: DecorationImage(
                                         fit: BoxFit.cover,
-                                        image: AssetImage("assets/cart.png"),
+                                        image: NetworkImage(
+                                          AppAssets.getNetworkImage(
+                                              data.vendorImage!),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -54,7 +69,7 @@ class MyBag extends StatelessWidget {
                                     width: Sizes.WIDTH_10,
                                   ),
                                   Text(
-                                    "Sam’s Store",
+                                    data.vendorName ?? "",
                                     style: context.bodySmall
                                         .copyWith(fontWeight: FontWeight.w700),
                                   ),
@@ -101,9 +116,12 @@ class MyBag extends StatelessWidget {
                                             Radius.circular(Sizes.RADIUS_10),
                                         bottomLeft:
                                             Radius.circular(Sizes.RADIUS_10)),
-                                    image: const DecorationImage(
+                                    image: DecorationImage(
                                       fit: BoxFit.cover,
-                                      image: AssetImage("assets/image2.png"),
+                                      image: NetworkImage(
+                                        AppAssets.getNetworkImage(
+                                            data.varaiantImgUrl!),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -126,9 +144,11 @@ class MyBag extends StatelessWidget {
                                   child: Column(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Sploofy PRO - Per Sploofy PRO - Per...",
+                                        data.variantName ?? "",
                                         style: context.bodySmall.copyWith(
                                             color: Colors.white,
                                             fontWeight: FontWeight.w500),
@@ -138,27 +158,13 @@ class MyBag extends StatelessWidget {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            "Rs. 1330",
+                                            "Rs. ${data.variantPrice}",
                                             style: context.bodySmall.copyWith(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w500),
                                           ),
-                                          Container(
-                                            height: Sizes.HEIGHT_32,
-                                            width: Sizes.WIDTH_32,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color:
-                                                        context.primaryColor),
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Sizes.RADIUS_6)),
-                                            child: const Icon(
-                                              Icons.add_circle,
-                                              size: Sizes.ICON_SIZE_24,
-                                              color: Colors.white,
-                                            ),
-                                          ),
+                                          itemIncrement(context, controller,
+                                              addItem: true, data: data)
                                         ],
                                       ),
                                     ],
@@ -180,7 +186,7 @@ class MyBag extends StatelessWidget {
                                   .copyWith(fontWeight: FontWeight.w500),
                             ),
                             Text(
-                              "150 ml",
+                              data.variantSize ?? "",
                               style: context.bodySmall
                                   .copyWith(fontWeight: FontWeight.w500),
                             ),
@@ -193,13 +199,13 @@ class MyBag extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Size:",
+                              "Profit:",
                               style: context.bodySmall.copyWith(
                                   fontWeight: FontWeight.w500,
                                   color: AppColors.secondaryColor),
                             ),
                             Text(
-                              "Rs 0",
+                              "Rs ${data.profit}",
                               style: context.bodySmall.copyWith(
                                   fontWeight: FontWeight.w500,
                                   color: AppColors.secondaryColor),
@@ -215,55 +221,7 @@ class MyBag extends StatelessWidget {
                     height: Sizes.HEIGHT_10,
                   );
                 },
-                itemCount: 10),
-          ),
-          Container(
-            color: const Color(0xffFFF5EC),
-            padding: const EdgeInsets.symmetric(
-              horizontal: Sizes.PADDING_28,
-              vertical: Sizes.PADDING_24,
-            ),
-            child: Column(
-              children: [
-                ListTile(
-                  leading: Text(
-                    "Customer Price",
-                    style: context.bodyLarge.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.w700),
-                  ),
-                  trailing: Text(
-                    "Rs. 1340",
-                    style: context.bodySmall.copyWith(
-                        color: AppColors.secondaryColor,
-                        fontSize: Sizes.TEXT_SIZE_20,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ),
-                const SizedBox(
-                  height: Sizes.HEIGHT_20,
-                ),
-                const Divider(
-                  thickness: 0.5,
-                ),
-                const SizedBox(
-                  height: Sizes.HEIGHT_24,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomElevatedButton(
-                        text: "Proceed To Checkout",
-                        onPressed: () {
-                          Get.toNamed(AppRoutes.CUSTOMER_ADDRESS);
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
+              ),
       ),
     );
   }

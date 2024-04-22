@@ -1,6 +1,5 @@
 import 'package:dukaan/constants/constants.dart';
 import 'package:dukaan/extensions/context_extension.dart';
-import 'package:dukaan/routes/routes.dart';
 import 'package:dukaan/views/seller/product/controllers/product_details_controller.dart';
 import 'package:dukaan/widgets/custom_widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
@@ -57,11 +56,15 @@ Widget bottomContainer(
         Row(
           children: [
             Expanded(
-              child: CustomElevatedButton(
-                text: "Place Order",
-                onPressed: () {
-                  Get.toNamed(AppRoutes.ORDER_DETAILS);
-                },
+              child: Obx(
+                () => CustomElevatedButton(
+                  text: "Place Order",
+                  onPressed: controller.varId.value == ""
+                      ? null
+                      : () {
+                          controller.addToBag();
+                        },
+                ),
               ),
             ),
             const SizedBox(
@@ -70,7 +73,9 @@ Widget bottomContainer(
             Expanded(
               child: CustomElevatedButton(
                 text: "Share",
-                onPressed: () {},
+                onPressed: () async {
+                  controller.saveNetworkImage();
+                },
               ),
             ),
           ],

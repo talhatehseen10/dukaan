@@ -67,15 +67,12 @@ class AppPages {
       page: () => const Order(),
       binding: OrderBinding(),
     ),
-
     //VENDOR SECTION
-    
     GetPage(
       name: AppRoutes.HOME_VENDOR,
       page: () => const Home(),
       binding: HomeVendorBinding(),
     ),
-    
     GetPage(
       name: AppRoutes.PRODUCT_VENDOR,
       page: () => const Product(),
@@ -86,13 +83,15 @@ class AppPages {
       page: () => const AddProduct(),
       binding: AddProductVendorBinding(),
     ),
-
     GetPage(
       name: AppRoutes.ORDERS_VENDOR,
       page: () => const Orders(),
       binding: OrderVendorBinding(),
     ),
-    
+    GetPage(
+      name: AppRoutes.NOTIFICATION,
+      page: () => const Notification(),
+      binding: NotificationBinding(),
+    ),
   ];
-
 }

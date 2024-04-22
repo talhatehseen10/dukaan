@@ -26,6 +26,7 @@ class AppStrings {
   static const String LOT_NO = "Lot No.";
   static const String PHYSICAL_QTY = "Physical Quantity";
   static const String ITEM_NO = "Item No.";
+
   //static const String DESCRIPTION = "Description";
   static const String CURRENT_QTY = "Current Qty";
   static const String COMMENT = "Comment";
@@ -85,20 +86,7 @@ class AppStrings {
   static const String SETTINGS = "Settings";
 
   //APP BAR TITLE
-  static const String INVENTORY_MANAGEMENT = "Inventory Management";
-  static const String BIN_TRANSFER = "Bin Transfer";
-  static const String INVENTORY_ADJUSTMENT = "Inventory Adjustment";
-  static const String LOCATION_TRANSFER = "Location Transfer";
-  static const String APP_SETTING = "App Setting";
-  static const String STOCK_DETAILS = "Stock Details";
-  static const String MATERIAL_BANK = "Material Bank";
-  static const String SHIPPING = "Shipping";
-  static const String SALES_ORDER = "Sales Order";
-  static const String SALES = "Sales";
-  static const String WAREHOUSE_SHIPMENT = "Warehouse Shipment";
-  static const String WAREHOUSE_SHIPMENT_LINE = "Warehouse Shipment Line";
-  static const String WAREHOUSE_PICK = "Warehouse Pick";
-  static const String PACKING = "Packing";
+  static const String NOTIFICATION = "Notification";
 
   // hint_text
   static const String FIRST_NAME = "First Name";

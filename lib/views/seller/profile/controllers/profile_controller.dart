@@ -1,3 +1,4 @@
+import 'package:dukaan/routes/routes.dart';
 import 'package:dukaan/services/api/api_constants.dart';
 import 'package:dukaan/services/api/base_client.dart';
 import 'package:dukaan/views/authentication/controllers/login_form_controller.dart';
@@ -23,8 +24,7 @@ class ProfileController extends GetxController {
           token: loginFormController.userLoginData!.data!.token),
       onSuccess: (response) {
         if (response.data["success"]) {
-          Get.back();
-          Get.back();
+          Get.offAndToNamed(AppRoutes.LOGIN);
         }
       },
       onLoading: () {

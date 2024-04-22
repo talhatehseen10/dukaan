@@ -29,7 +29,7 @@ class AppRoutes {
   //PROFILE
   static const String PROFILE = Profile.routeName;
 
-  //ADDRESS 
+  //ADDRESS
   static const String CUSTOMER_ADDRESS = CustomerAddress.routeName;
 
   //CHECKOUT
@@ -46,4 +46,7 @@ class AppRoutes {
 
   //ORDERS
   static const String ORDERS_VENDOR = Orders.routeName;
+
+  //NOTIFICATION
+  static const String NOTIFICATION = Notification.routeName;
 }

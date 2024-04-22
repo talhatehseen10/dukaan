@@ -4,21 +4,29 @@ class Preferences {
   final storage = GetStorage();
 
   void setUser(data) => storage.write("userData", data);
+
   getUser() => storage.read("userData");
+
   getName() => storage.read("userData")["userInfo"]["name"];
+
   getUserName() => storage.read("userData")["userInfo"]["username"];
+
   getUserData() => storage.read("userData");
 
   void setUserId(String userId) => storage.write("userId", userId);
+
   getUserId() => storage.read("userId");
 
   void setUserRole(String userRole) => storage.write("userRole", userRole);
+
   getUserRole() => storage.read("userRole");
 
-void setIsLogin(bool val) => storage.write("isLogin", val);
+  void setIsLogin(bool val) => storage.write("isLogin", val);
+
   getIsLogin() => storage.read("isLogin");
-  
+
   void setUserToken(String token) => storage.write("token", token);
+
   getToken() => storage.read("token");
 
   void setWhseShipNo(String whseShipNo) =>
@@ -26,11 +34,21 @@ void setIsLogin(bool val) => storage.write("isLogin", val);
 
   getWhseShipNo() => storage.read("whseShipNo");
 
-  void setIntroScreen(bool val) =>
-      storage.write("isTutorialShown", val);
+  void setIntroScreen(bool val) => storage.write("isTutorialShown", val);
+
   getIntroScreen() => storage.read("isTutorialShown");
 
   void resetFav() => storage.write(getUserName(), []);
+
   void setFav(List names) => storage.write(getUserName(), names);
+
   getFav() => storage.read(getUserName());
+
+  void setProdCat(String cat) => storage.write("prodCat", cat);
+
+  getProdCat() => storage.read("prodCat");
+
+  void setCatId(String cat) => storage.write("catId", cat);
+
+  getCatId() => storage.read("catId");
 }

@@ -1,3 +1,4 @@
+import 'package:dukaan/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -48,29 +49,39 @@ AppBar customAppBar(
       ],
     ),
     actions: actions ??
-        const [
-          Icon(
+        [
+          const Icon(
             Icons.search_rounded,
             color: Colors.black,
             size: Sizes.ICON_SIZE_24,
           ),
-          SizedBox(
+          const SizedBox(
             width: Sizes.WIDTH_10,
           ),
-          Icon(
-            Icons.notifications_outlined,
-            color: Colors.black,
-            size: Sizes.ICON_SIZE_24,
+          GestureDetector(
+            onTap: () {
+              Get.toNamed(AppRoutes.NOTIFICATION);
+            },
+            child: const Icon(
+              Icons.notifications_outlined,
+              color: Colors.black,
+              size: Sizes.ICON_SIZE_24,
+            ),
           ),
-          SizedBox(
+          const SizedBox(
             width: Sizes.WIDTH_10,
           ),
-          Icon(
-            Icons.shopping_bag_outlined,
-            color: Colors.black,
-            size: Sizes.ICON_SIZE_24,
+          GestureDetector(
+            onTap: () {
+              Get.toNamed(AppRoutes.MY_BAG);
+            },
+            child: const Icon(
+              Icons.shopping_bag_outlined,
+              color: Colors.black,
+              size: Sizes.ICON_SIZE_24,
+            ),
           ),
-          SizedBox(
+          const SizedBox(
             width: Sizes.WIDTH_10,
           ),
         ],

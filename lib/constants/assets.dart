@@ -20,4 +20,7 @@ class AppAssets {
   static String getSVGImage(String imageName) => 'assets/images/$imageName.svg';
 
   static String getPNGImage(String imageName) => 'assets/images/$imageName.png';
+
+  static String getNetworkImage(String url) =>
+      ApiConstants.BASE_URL_IMAGE + url;
 }
